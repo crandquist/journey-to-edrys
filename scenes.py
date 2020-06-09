@@ -1,5 +1,14 @@
+from sys import exit
+
 class Scene(object):
-    pass
+
+    def __init__(self):
+        self.name = "I am a scene."
+
+    def enter(self):
+        print("This scene is not yet configured.")
+        print("Subclass it and implement enter().")
+        exit(1)
 
 class Kitchen(Scene):
     pass
