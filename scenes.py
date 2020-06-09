@@ -11,31 +11,51 @@ class Scene(object):
         exit(1)
 
 class Kitchen(Scene):
-    pass
+    
+    def enter(self):
+        pass
 
 class Garden(Scene):
-    pass
+    
+    def enter(self):
+        pass
 
 class Forest(Scene):
-    pass
+    
+    def enter(self):
+        pass
 
 class Well(Scene):
-    pass
+    
+    def enter(self):
+        pass
 
 class Cabin(Scene):
-    pass
+
+    def enter(self):
+        pass
 
 class Shed(Scene):
-    pass
+    
+    def enter(self):
+        pass
 
 class Bridge(Scene):
-    pass
+    
+    def enter(self):
+        pass
 
 class Cave(Scene):
-    pass
+    
+    def enter(self):
+        pass
 
 class Beach(Scene):
-    pass
+    
+    def enter(self):
+        pass
 
 class Final(Scene):
-    pass
+    
+    def enter(self):
+        pass
