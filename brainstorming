@@ -9,19 +9,28 @@ Initial scene:
     It's midnight and you've walked into your kitchen with the goal of obtaining a midnight snack. You go to the fridge and open the door. You blink once. Twice. There is no food in your fridge. Instead, it looks as though you have opened a doorway looking into a small garden in the middle of a forest of towering maple trees. There is a stone path leading a few feet into the center where there is an iron bench. You can either close the fridge, assuming that you're just going a little crazy because you're so tired, or you can step into the garden.
     What do you do?
 
-Garden:
+Garden: 
+    Player approaches the bench and fijnds a note signed The Mage that asks the player to join him on a journey to find the beloved Edrys. Player then sees that a path leads to the West into the forest. There is a sword and weapon belt laying against a tree at the edge of the path. Player gets option to pick it up. 
 
 Forest:
+    Player comes across his first challenge in the form of a wolf blocking the path. Player can either kill the wolf with the sword, wrestle the wolf, pet the wolf, or run away. Petting the wolf allows the Player to move forward with the wolf following at their side. All others result in death and losing.
 
 Well:
+    Once out of the forest, the Player comes to a clearing containing a small wooden cabin and a large brick well. The door to the cabin is locked, but there is another note under a stone on the edge of the well. This note, again from the Mage, advises the player that the key that opens the house is in the bucket at the bottom of the well. There is a crow sitting on the broken well handle that The Mage says will retrieve the key if he answers a riddle. 
+        What is the healthiest kind of water?
+            Well water
 
 Mage's Home:
+    With the key in hand, the Player enters what turns out to be the Mage's cabin. It is small and contains only a bed, a fireplace with a large cooking pot, and a table scattered with a small pile of gold coins, papers, dishes, and other brickabrack. There is a journal on the bed that when read prompts the player to go through the door on the back wall to the shed which will provide more answers. The journal talks about how important Edrys is to The Mage and how he would be lost without her. That they like to spend time in the shed behind the house. Player also has ability to pick up the coins but does not get prompted to do so.
 
 Shed:
+    Once the Player enters the shed behind the house they see that it is largely empty. There is a table along one wall with three boxes. One contains a large spider that jumps out of the box and latches on to the Player's hand, killing him. The second contains a pile of mushrooms and when the wolf barks behind the Player they bump the box causing the mushroom spores to scatter into the air, killing the Player. The final box contains a map. The title on top of the map says "Adventure Awaits, Edrys". The Player recognizes the cabin and shed on the map and follows it out to a road that leads to a wide river and a bridge.
 
 Bridge:
+    Player is immediately given the option to cross the bridge or to examine it first. Choosing to cross the bridge results in the player being eaten by a bridge troll when they reach the halfway point on the bridge. Examining the bridge first allows the Player to introduce themselves to the troll and either answer a riddle or offer the wolf as a sacrafice to cross the river. Offering the wolf results in the troll stating how cruel it is for the human to be unkind to such a majestic creature and that not only will the troll keep it as his pet, but he will now eat the mean human. Offering to answer a riddle results in the troll laughing at the player and explaining that all he wants is the price of the toll and the player can pass. If the Player picked up the coins in the Mage's home then he can pay the toll, otherwise he has to plead for his life which does not work and the player dies. On the other side of the bridge is a path that heads to the hills. The player can see a cave down the path a ways.
 
 Cave:
+    The wolf seems to be weary upon entering the cave. There's enough light coming in from the entrance to see to the back of the cave, so the Player continues forward. Nearly to the back of the cave, the Player hears the wolf start to growl and bark and turns around when the light fades a bit from the cave. The entrance to the cave is now shadowed by the large figures of two grizzly bears. Fighting the smaller bear results in victory. Player stabs the bear with their sword (if they have it) and the wolf holds off the larger bear while the Player escapes down the winding staircase at the back of the cave. Any other response results in death. Specifically, taking on the larger bear is a torn throat, trying to run causes the wolf to be killed first and then the player. Any other response causes the large bear to knock the player to the ground and wake up in their bed with a bump on the back of their head and scrapes on the palms of their hands.
 
 Beach:
     As you walk down the winding staircase, the sounds of the ocean grow louder. There is a door at the bottom that is open just enough that you can see the sunlight pouring in. You get to the bottom of the staircase and push open the door to reveal a small beach enclosed on three sides by expansive cliffs. The ocean is calm in front of you and there is a slight breeze. The only other thing on the beach is a boulder the size of a large dog that is just at the edge of the water. You walk toward the boulder and notice that something seems off about the way the light hits it. It almost looks as if the boulder has.... Scales?
