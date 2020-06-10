@@ -128,7 +128,6 @@ class Garden(Scene):
             choice = answer.lower()
             if choice == "yes":
                 inventory.append("sword")
-                print(inventory)
                 print("You strap the sword to your back and follow the path into the forest.")
             else:
                 print("Leaving the sword where it is, you walk into the forest.")
@@ -142,12 +141,60 @@ class Forest(Scene):
     
     def enter(self):
         print("""
-            \nScene context will go here.
+            \nThe trees grow thicker around you as you walk deeper into the forest. Less and less sunlight is filtering through until you find yourself in semi darkness. The path is dirt with mushrooms of all shapes and colors popping up at the base of trees along the edges. There is sound of wildlife around you: leaves rustling as animals move through the trees, birds chirping.
+            \nFor a moment everything grows louder as the sound of hundreds of birds taking flight at once echoes through the trees. Then the forest goes quiet. You look around, but it is hard to see any details off of the path with the trees as thick as they are. The path turns up ahead and there is no end to the forest in sight. 
             """)
-        choice = input("> ")
+        input()
+        print("\There is a rustling of leaves to your left.")
+        input()
+        print("\nMovement in the trees ahead of you.")
+        input()
+        print("""
+            \nYou hear deep and heavy panting ahead of you as a large grey wolf with black ears and paws stalks toward you.
+            \nThe wolf stops a few yards from you and widens his stance, ready to strike.
+            \nDo you:
+            \nAttack the wolf with your sword
+            \nLunge at the wolf and attempt to wrestle him to the ground
+            \nWalk slowly toward the wolf, hand in front of you to suggest you mean it no harm
+            \nTurn and run back to the garden
+            """)
+        answer = input("> ")
+        choice = answer.lower()
 
-        if "choice option" in choice:
-            print("\nConsequence goes here.")
+        if ("hand" in choice) or ("walk" in choice) or ("no harm" in choice):
+            print("""\nYou raise your hand, palm up, in front of you as you walk toward the wolf, each step slow and careful.
+                \nThe wolf watches wearily. Gowing curious as you get closer, stance losening, head cocked to the side.
+                \nYou stop a few feet away, allowing the wolf to come to you.
+                \nThe wolf takes two cautious steps and leans his snout forward and down toward your hand, sniffing. After a moment the wolf nudges the back of your hand with his snout and licks your fingers once.
+                \nYou raise your hand to the top of the wolf's head and scratch between his ears. The wolf chuffs and leans into your hand.
+                \nAfter a few moments spent petting the wolf you decide that it is time to move on. You pat his head once and move to walk passed him and continue down the path, but the wolf nips at the sheath on your back to grab your attention.
+                \nThe wolf cocks his head again as you turn back toward him and you're not sure why, but his intention is clear. The wolf wants to know if he can come with you.
+                \nDo you allow the wolf to join you on your journey?
+                """)
+            answer = input("> ")
+            choice = answer.lower()
+
+            if choice == "yes":
+                inventory.append("wolf")
+                print(inventory)
+            else:
+                print(inventory)
+                pass
+
+        elif ("attack" in choice) or ("sword" in choice):
+            pass
+
+        elif ("lunge" in choice) or ("wrestle" in choice):
+            pass
+
+        elif ("run" in choice) or ("garden" in choice):
+            pass
+
+        else:
+            print("Please pick an appropriate option.")
+            self.enter()
+
+            return 'well'
             #return statement moving game forward
 
         elif "losing choice option" in choice:
