@@ -9,7 +9,14 @@ class Engine(object):
         self.scene_map = scene_map
     
     def play(self):
-        pass
+        passcurrent_scene = self.scene_map.opening_scene()
+        last_scene = self.scene_map.next_scene('finished')
+
+        while current_scene != last_scene:
+            next_scene_name = current_scene.enter()
+            current_scene = self.scene_map.next_scene(next_scene_name)
+
+        current_scene.enter()
 
 class Scene(object):
 
@@ -267,8 +274,9 @@ class Map(object):
     def __init__(self, starting_scene):
         self.starting_scene = starting_scene
 
-    def next_scene(self):
-        pass
+    def next_scene(self, scene_name):
+        val = Map.scenes.get(scene_name)
+        return val
 
     def opening_scene(self):
-        pass
+        return self.next_scene(self.start_scene)
