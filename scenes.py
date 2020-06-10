@@ -174,6 +174,8 @@ class Forest(Scene):
 
             if choice == "yes":
                 inventory.append("wolf")
+                return 'well'
+
             return 'well'
 
         elif ("attack" in choice) or ("sword" in choice):
@@ -220,7 +222,7 @@ class Forest(Scene):
             exit(1)
 
         else:
-            print("Please pick an appropriate option.")
+            print("\nPlease pick an appropriate option.")
             self.enter()
 
 class Well(Scene):
