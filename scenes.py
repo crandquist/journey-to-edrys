@@ -3,6 +3,8 @@ from random import randint
 from textwrap import dedent
 
 
+inventory = []
+
 class Engine(object):
 
     def __init__(self, scene_map):
@@ -31,12 +33,12 @@ class Scene(object):
     def try_again(self):
         print("\nWould you like to try again?")
         answer = input("> ")
-        selection = answer.lower()
+        choice = answer.lower()
 
-        if selection == "yes":
+        if choice == "yes":
             #this part of function should include a call to start the game over
             pass
-        elif selection == "no":
+        elif choice == "no":
             print("\nThank you for playing!")
             exit(1)
         else:
@@ -46,6 +48,9 @@ class Scene(object):
 class Kitchen(Scene):
     
     def enter(self):
+        print("\nWelcome to Journey of Edrys!")
+        print("\nPress Enter to begin.")
+        input()
 
         print("""\nIt's midnight and you have walked into your kitchen with the goal of obtaining a midnight snack. 
             \nYou go to the fridge and open the door. 
@@ -60,10 +65,10 @@ class Kitchen(Scene):
             \nWalk into the garden.
             \nWhat do you do?
             """)
-        choice = input("> ")
-        
+        answer = input("> ")
+        choice = answer.lower()
+
         if ("walk" in choice) or ("garden" in choice):
-            
             return 'garden'
 
         elif ("close" in choice) or ("fridge" in choice):
@@ -79,22 +84,58 @@ class Garden(Scene):
     
     def enter(self):
         print("""
-            \nScene context will go here.
+            \nYou step through the fridge and into the garden. The air is warm and sunlight is coming in through the trees. The rock path leading to the garden is uneven and you walk carefully, not knowing if this fridge-world is a halucination or a dream.
+            \nWhen you reach the black iron bench you notice a piece of parchment sitting there with a curling scrawl written across it.
             """)
-        choice = input("> ")
+        print("\nWould you like to read the parchment?")
+            answer = input("> ")
+            choice = answer.lower()
 
-        if "choice option" in choice:
-            print("\nConsequence goes here.")
-            #return statement moving game forward
+            if choice == "yes":
+                pass
+            
+            elif choice == "no":
+                print("\nYou should probably just read the parchment. There's nothing else to do here.")
+            
+            else:
+                print("\nJust read the parchment, we don't have all day.")
+            
+            input("\n[enter]")
+            
+            print("""\nYou pick up the parchment and read:
+                \nWelcome to the forest of Wyverly Adventurer!
+                \nI am the Mage of this forest. I have brought you here because I need your help!
+                \nA dear friend of mine has gone missing and I need your help to find her. Edrys is prone to wander off, but she has never been gone longer than an hour or two without word before. I am worried something terrible has happened to her.
+                \nFollow the path to the west that leads through the forest. I will talk to you there.
+                \nSigned,
+                \nThe Mage of Wyverly
+                """)
+            print("""
+                \nLooking around the garden again, you notice the path to the west that The Mage mentioned in the note. There is something leaning against one of the trees to the side of the path.
+                \nWould you like to take the path into the forest? Or examine the item against the tree?
+                """)
+                selection = input("> ")
+                choice = selection.lower()
 
-        elif "losing choice option" in choice:
-            print("/nConsequence goes here.")
-            print("Losing statement goes here.")
-            self.try_again()
-
-        else:
-            print("Please enter an available choice.")
-            self.enter()
+                if ("path" in choice) or ("forest" in choice):
+                    return 'forest'
+                
+                elif ("item" in choice) or ("tree" in choice):
+                    print("""\nAs you approach the path into the forest, you see that the item leaning against the tree is a sword with a blade the length of your arm. It is sheithed in dark brown leather and has a strap to go across your back.
+                        \nDo you take the sword?
+                        """)
+                    answer = input("> ")
+                    choice = answer.lower()
+                    if choice == "yes":
+                        inventory.append("sword")
+                        print("You strap the sword to your back and follow the path into the forest.")
+                    else:
+                        print("Leaving the sword where it is, you walk into the forest.")
+                    return 'forest'
+                
+                else:
+                    print("Please enter an available choice.")
+                    self.enter()
 
 class Forest(Scene):
     
@@ -272,6 +313,7 @@ class Map(object):
 
     def __init__(self, start_scene):
         self.start_scene = start_scene
+        self.inventory = []
 
     def next_scene(self, scene_name):
         val = Map.scenes.get(scene_name)
