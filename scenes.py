@@ -14,7 +14,7 @@ class Engine(object):
 class Scene(object):
 
     def __init__(self):
-        self.name = "I am a scene."
+        self.attempt = 1
 
     def enter(self):
         print("This scene is not yet configured.")
@@ -27,9 +27,10 @@ class Scene(object):
         selection = answer.lower()
 
         if selection == "yes":
+            #this part of function should include a call to start the game over
             pass
         elif selection == "no":
-            print("Thank you for playing!")
+            print("\nThank you for playing!")
             exit(1)
         else:
             print("\nPlease enter yes or no.")
@@ -38,7 +39,8 @@ class Scene(object):
 class Kitchen(Scene):
     
     def enter(self):
-        print("""It's midnight and you have walked into your kitchen with the goal of obtaining a midnight snack. 
+
+        print("""\nIt's midnight and you have walked into your kitchen with the goal of obtaining a midnight snack. 
             \nYou go to the fridge and open the door. 
             \nYou blink once. 
             \nTwice. 
@@ -52,57 +54,189 @@ class Kitchen(Scene):
             \nWhat do you do?
             """)
         choice = input("> ")
-        #print(choice)
-
-        if ("walk" or "garden") in choice:
+        
+        if ("walk" in choice) or ("garden" in choice):
             print("\nYou approach the bench and notice a piece of parchment laying on it.")
             print("\nWould you like to read the parchment?")
             choice = input("> ")
-        elif ("close" or "fridge") in choice:
+            #add a return statement that changes the current_scene to the next scene.
+
+        elif ("close" in choice) or ("fridge" in choice):
             print("\nYou close the fridge and decide to go back to bed without a midnight snack.")
             print("\nThere will be no adventure for you today.")
             self.try_again()
-
+        
+        else:
+            print("\nPlease enter an available choice.")
+            self.enter()
 
 class Garden(Scene):
     
     def enter(self):
-        pass
+        print("""
+            \nScene context will go here.
+            """)
+        choice = input("> ")
+
+        if "choice option" in choice:
+            print("\nConsequence goes here.")
+            #return statement moving game forward
+
+        elif "losing choice option" in choices:
+            print("/nConsequence goes here.")
+            print("Losing statement goes here.")
+            self.try_again()
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Forest(Scene):
     
     def enter(self):
-        pass
+        print("""
+            \nScene context will go here.
+            """)
+        choice = input("> ")
+
+        if "choice option" in choice:
+            print("\nConsequence goes here.")
+            #return statement moving game forward
+
+        elif "losing choice option" in choices:
+            print("/nConsequence goes here.")
+            print("Losing statement goes here.")
+            self.try_again()
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Well(Scene):
     
     def enter(self):
-        pass
+        print("""
+            \nScene context will go here.
+            """)
+        choice = input("> ")
+
+        if "choice option" in choice:
+            print("\nConsequence goes here.")
+            #return statement moving game forward
+
+        elif "losing choice option" in choices:
+            print("/nConsequence goes here.")
+            print("Losing statement goes here.")
+            self.try_again()
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Cabin(Scene):
 
     def enter(self):
-        pass
+        print("""
+            \nScene context will go here.
+            """)
+        choice = input("> ")
+
+        if "choice option" in choice:
+            print("\nConsequence goes here.")
+            #return statement moving game forward
+
+        elif "losing choice option" in choices:
+            print("/nConsequence goes here.")
+            print("Losing statement goes here.")
+            self.try_again()
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Shed(Scene):
     
     def enter(self):
-        pass
+        print("""
+            \nScene context will go here.
+            """)
+        choice = input("> ")
+
+        if "choice option" in choice:
+            print("\nConsequence goes here.")
+            #return statement moving game forward
+
+        elif "losing choice option" in choices:
+            print("/nConsequence goes here.")
+            print("Losing statement goes here.")
+            self.try_again()
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Bridge(Scene):
     
     def enter(self):
-        pass
+        print("""
+            \nScene context will go here.
+            """)
+        choice = input("> ")
+
+        if "choice option" in choice:
+            print("\nConsequence goes here.")
+            #return statement moving game forward
+
+        elif "losing choice option" in choices:
+            print("/nConsequence goes here.")
+            print("Losing statement goes here.")
+            self.try_again()
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Cave(Scene):
     
     def enter(self):
-        pass
+        print("""
+            \nScene context will go here.
+            """)
+        choice = input("> ")
+
+        if "choice option" in choice:
+            print("\nConsequence goes here.")
+            #return statement moving game forward
+
+        elif "losing choice option" in choices:
+            print("/nConsequence goes here.")
+            print("Losing statement goes here.")
+            self.try_again()
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Beach(Scene):
     
     def enter(self):
-        pass
+        print("""
+            \nScene context will go here.
+            """)
+        choice = input("> ")
+
+        if "choice option" in choice:
+            print("\nConsequence goes here.")
+            #return statement moving game forward
+
+        elif "losing choice option" in choices:
+            print("/nConsequence goes here.")
+            print("Losing statement goes here.")
+            self.try_again()
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Final(Scene):
     
