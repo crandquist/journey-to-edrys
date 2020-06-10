@@ -53,3 +53,8 @@ Final scene:
                 "Ah. I should have known you would not want to leave this land after the things you have seen this day. If I could allow you to stay, I certainly would, but it is nearing day in your world and there are those who need you as surely as I have. Go now, and I will ensure that you do not find yourself wanting for this world too greatly."
 
                 You open your eyes as the sun begins to rise, stretching out on your bed. Odd dreams from the night before are slipping from your brain as you fight to grasp on to them. A dragon. A... wizard? Battles and puzzles and a quest... It seems like a grand adventure. Maybe you should write a book about it.
+
+
+FEATURES I WOULD LIKE TO ADD:
+    -a three strike system for nonsense answers
+    -try again function
