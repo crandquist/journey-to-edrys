@@ -204,7 +204,20 @@ class Forest(Scene):
             exit(1)
 
         elif ("run" in choice) or ("garden" in choice):
-            pass
+            print("""
+                \nYou turn and start running back the way you came. The garden isn't in sight but there is nowhere else to go. You don't know whether the wolf is following you as you run and you worry about tripping over a stray rock or tree root on the path.
+                \nThere are leaves rustling in the forest to your right. Something clearly running alongside you. You tell yourself that it isn't the wolf. Something else must be running from the predator as well. Whatever it is, it's faster than you. You can hear it pulling ahead of you in the trees.
+                \nThe wolf jumps out in front of you from the trees to your right. You stop mid-stride and turn to run the other direction but trip and fall as you do. Your hands break your fall and there is pain in your wrist. Broken or sprained, it doesn't seem to matter as there is suddenly a firey pain in your leg as the wolf bites down and begins to drag you into the trees.
+                \nYou're screaming for help as the darkness creeps into your vision...
+                """)
+            input("\n[enter]")
+            print("""
+                \nYou wake up screaming, surging forward in bed with your hands behind you, you notice there is a pain in your wrist. 
+                \nYou take a deep breath and decide to grab a snack out of the kitchen to clear your mind. Visions of a dark forest fill your head as you get out of bed.
+                """)
+            input("\n[enter]")
+            print("\nYou lost. Thank you for playing and better luck next time!")
+            exit(1)
 
         else:
             print("Please pick an appropriate option.")
