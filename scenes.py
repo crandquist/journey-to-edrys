@@ -145,6 +145,7 @@ class Forest(Scene):
             \nThe trees grow thicker around you as you walk deeper into the forest. Less and less sunlight is filtering through until you find yourself in semi darkness. The path is dirt with mushrooms of all shapes and colors popping up at the base of trees along the edges. There is sound of wildlife around you: leaves rustling as animals move through the trees, birds chirping.
             \nFor a moment everything grows louder as the sound of hundreds of birds taking flight at once echoes through the trees. Then the forest goes quiet. You look around, but it is hard to see any details off of the path with the trees as thick as they are. The path turns up ahead and there is no end to the forest in sight. 
             """)
+        input("[enter]")
         print("""
             \nThere is a frantic rustling of leaves to your left and movement in the trees in front of you.
             \nYou hear deep and heavy panting ahead of you as a large grey wolf with black ears and paws stalks toward you.
@@ -178,7 +179,17 @@ class Forest(Scene):
             return 'well'
 
         elif ("attack" in choice) or ("sword" in choice):
-            pass
+            
+            if "sword" not in inventory:
+                print("\nYou do not have a sword to attack the wolf with.")
+                self.enter()
+            else:
+                print("\nYou pull the sword from the sheath at your back swinging it as you move toward the wolf. The wolf snarls and leaps toward you, knocking the sword out of your hands as you fall to the ground. You hit your head hard against the ground and all you know before you lose conciousness is the weight of the wolf on your chest and a large mouth full of teeth coming toward you.")
+                input("[enter]")
+                print("\nYou are gasping for breath as you sit up from your bed, hands coming to your neck. It must have been a nightmare, that wolf towering over you. You are drenched in sweat and you decide some food might be in order before you go back to bed. As you head toward the kitchen, you notice with some confusion that there seems to be a rather large bump on the back of your head.")
+                input("[enter]")
+                print("\nYou lost. Thank you for playing and better luck next time!")
+                exit(1)
 
         elif ("lunge" in choice) or ("wrestle" in choice):
             pass
