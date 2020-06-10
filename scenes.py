@@ -88,54 +88,55 @@ class Garden(Scene):
             \nWhen you reach the black iron bench you notice a piece of parchment sitting there with a curling scrawl written across it.
             """)
         print("\nWould you like to read the parchment?")
+        answer = input("> ")
+        choice = answer.lower()
+
+        if choice == "yes":
+            pass
+        
+        elif choice == "no":
+            print("\nYou should probably just read the parchment. There's nothing else to do here.")
+            input("\n[enter]")
+
+        else:
+            print("\nJust read the parchment, we don't have all day.")
+            input("\n[enter]")
+        
+        print("""\nYou pick up the parchment and read:
+            \nWelcome to the forest of Wyverly Adventurer!
+            \nI am the Mage of this forest. I have brought you here because I need your help!
+            \nA dear friend of mine has gone missing and I need your help to find her. Edrys is prone to wander off, but she has never been gone longer than an hour or two without word before. I am worried something terrible has happened to her.
+            \nFollow the path to the west that leads through the forest. I will talk to you there.
+            \nSigned,
+            \nThe Mage of Wyverly
+            """)
+        print("""
+            \nLooking around the garden again, you notice the path to the west that The Mage mentioned in the note. There is something leaning against one of the trees to the side of the path.
+            \nWould you like to take the path into the forest? Or examine the item against the tree?
+            """)
+        answer = input("> ")
+        choice = answer.lower()
+
+        if ("path" in choice) or ("forest" in choice):
+            return 'forest'
+        
+        elif ("item" in choice) or ("tree" in choice):
+            print("""\nAs you approach the path into the forest, you see that the item leaning against the tree is a sword with a blade the length of your arm. It is sheithed in dark brown leather and has a strap to go across your back.
+                \nDo you take the sword?
+                """)
             answer = input("> ")
             choice = answer.lower()
-
             if choice == "yes":
-                pass
-            
-            elif choice == "no":
-                print("\nYou should probably just read the parchment. There's nothing else to do here.")
-            
+                inventory.append("sword")
+                print(inventory)
+                print("You strap the sword to your back and follow the path into the forest.")
             else:
-                print("\nJust read the parchment, we don't have all day.")
-            
-            input("\n[enter]")
-            
-            print("""\nYou pick up the parchment and read:
-                \nWelcome to the forest of Wyverly Adventurer!
-                \nI am the Mage of this forest. I have brought you here because I need your help!
-                \nA dear friend of mine has gone missing and I need your help to find her. Edrys is prone to wander off, but she has never been gone longer than an hour or two without word before. I am worried something terrible has happened to her.
-                \nFollow the path to the west that leads through the forest. I will talk to you there.
-                \nSigned,
-                \nThe Mage of Wyverly
-                """)
-            print("""
-                \nLooking around the garden again, you notice the path to the west that The Mage mentioned in the note. There is something leaning against one of the trees to the side of the path.
-                \nWould you like to take the path into the forest? Or examine the item against the tree?
-                """)
-                selection = input("> ")
-                choice = selection.lower()
-
-                if ("path" in choice) or ("forest" in choice):
-                    return 'forest'
-                
-                elif ("item" in choice) or ("tree" in choice):
-                    print("""\nAs you approach the path into the forest, you see that the item leaning against the tree is a sword with a blade the length of your arm. It is sheithed in dark brown leather and has a strap to go across your back.
-                        \nDo you take the sword?
-                        """)
-                    answer = input("> ")
-                    choice = answer.lower()
-                    if choice == "yes":
-                        inventory.append("sword")
-                        print("You strap the sword to your back and follow the path into the forest.")
-                    else:
-                        print("Leaving the sword where it is, you walk into the forest.")
-                    return 'forest'
-                
-                else:
-                    print("Please enter an available choice.")
-                    self.enter()
+                print("Leaving the sword where it is, you walk into the forest.")
+            return 'forest'
+        
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 class Forest(Scene):
     
