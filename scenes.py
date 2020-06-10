@@ -9,7 +9,7 @@ class Engine(object):
         self.scene_map = scene_map
     
     def play(self):
-        passcurrent_scene = self.scene_map.opening_scene()
+        current_scene = self.scene_map.opening_scene()
         last_scene = self.scene_map.next_scene('finished')
 
         while current_scene != last_scene:
@@ -34,7 +34,6 @@ class Scene(object):
         selection = answer.lower()
 
         if selection == "yes":
-            #this part of function should include a call to start the game over
             pass
         elif selection == "no":
             print("\nThank you for playing!")
@@ -65,8 +64,25 @@ class Kitchen(Scene):
         if ("walk" in choice) or ("garden" in choice):
             print("\nYou approach the bench and notice a piece of parchment laying on it.")
             print("\nWould you like to read the parchment?")
-            choice = input("> ")
-            #add a return statement that changes the current_scene to the next scene.
+            answer = input("> ")
+            choice = answer.lower()
+            if choice == "yes":
+                pass
+            elif choice == "no":
+                print("\nYou should probably just read the parchment. There's nothing else to do here.")
+            else:
+                print("\nJust read the parchment, we don't have all day.")
+            input("\n[enter]")
+            print("""\nYou pick up the parchment and read:
+                \nWelcome to the forest of Wyverly Adventurer!
+                \nI am the Mage of this forest. I have brought you here because I need your help!
+                \nA dear friend of mine has gone missing and I need your help to find her. Edrys is prone to wander off, but she has never been gone longer than an hour or two without word before. I am worried something terrible has happened to her.
+                \nFollow the path to the west that leads through the forest. I will talk to you there.
+                \nSigned,
+                \nThe Mage of Wyverly
+                """)
+            input("\n[enter]")
+            return 'garden'
 
         elif ("close" in choice) or ("fridge" in choice):
             print("\nYou close the fridge and decide to go back to bed without a midnight snack.")
@@ -89,7 +105,7 @@ class Garden(Scene):
             print("\nConsequence goes here.")
             #return statement moving game forward
 
-        elif "losing choice option" in choices:
+        elif "losing choice option" in choice:
             print("/nConsequence goes here.")
             print("Losing statement goes here.")
             self.try_again()
@@ -110,7 +126,7 @@ class Forest(Scene):
             print("\nConsequence goes here.")
             #return statement moving game forward
 
-        elif "losing choice option" in choices:
+        elif "losing choice option" in choice:
             print("/nConsequence goes here.")
             print("Losing statement goes here.")
             self.try_again()
@@ -131,7 +147,7 @@ class Well(Scene):
             print("\nConsequence goes here.")
             #return statement moving game forward
 
-        elif "losing choice option" in choices:
+        elif "losing choice option" in choice:
             print("/nConsequence goes here.")
             print("Losing statement goes here.")
             self.try_again()
@@ -152,7 +168,7 @@ class Cabin(Scene):
             print("\nConsequence goes here.")
             #return statement moving game forward
 
-        elif "losing choice option" in choices:
+        elif "losing choice option" in choice:
             print("/nConsequence goes here.")
             print("Losing statement goes here.")
             self.try_again()
@@ -173,7 +189,7 @@ class Shed(Scene):
             print("\nConsequence goes here.")
             #return statement moving game forward
 
-        elif "losing choice option" in choices:
+        elif "losing choice option" in choice:
             print("/nConsequence goes here.")
             print("Losing statement goes here.")
             self.try_again()
@@ -194,7 +210,7 @@ class Bridge(Scene):
             print("\nConsequence goes here.")
             #return statement moving game forward
 
-        elif "losing choice option" in choices:
+        elif "losing choice option" in choice:
             print("/nConsequence goes here.")
             print("Losing statement goes here.")
             self.try_again()
@@ -215,7 +231,7 @@ class Cave(Scene):
             print("\nConsequence goes here.")
             #return statement moving game forward
 
-        elif "losing choice option" in choices:
+        elif "losing choice option" in choice:
             print("/nConsequence goes here.")
             print("Losing statement goes here.")
             self.try_again()
@@ -236,7 +252,7 @@ class Beach(Scene):
             print("\nConsequence goes here.")
             #return statement moving game forward
 
-        elif "losing choice option" in choices:
+        elif "losing choice option" in choice:
             print("/nConsequence goes here.")
             print("Losing statement goes here.")
             self.try_again()
@@ -260,7 +276,8 @@ class Finished(Scene):
 
 class Map(object):
     
-    scenes = {'garden': Garden(),
+    scenes = {'kitchen' : Kitchen(),
+            'garden' : Garden(),
             'forest' : Forest(),
             'well' : Well(),
             'cabin' : Cabin(),
@@ -271,8 +288,8 @@ class Map(object):
             'finished' : Finished()
     }
 
-    def __init__(self, starting_scene):
-        self.starting_scene = starting_scene
+    def __init__(self, start_scene):
+        self.start_scene = start_scene
 
     def next_scene(self, scene_name):
         val = Map.scenes.get(scene_name)
