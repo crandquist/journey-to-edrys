@@ -103,12 +103,12 @@ class Garden(Scene):
             input("\n[enter]")
         
         print("""\nYou pick up the parchment and read:
-            \nWelcome to the forest of Wyverly Adventurer!
+            \nWelcome to the forest of Wyverly, Adventurer!
             \nI am the Mage of this forest. I have brought you here because I need your help!
             \nA dear friend of mine has gone missing and I need your help to find her. Edrys is prone to wander off, but she has never been gone longer than an hour or two without word before. I am worried something terrible has happened to her.
             \nFollow the path to the west that leads through the forest. I will talk to you there.
             \nSigned,
-            \nThe Mage of Wyverly
+            \nThe Mage of Wyverly Forest
             """)
         print("""
             \nLooking around the garden again, you notice the path to the west that The Mage mentioned in the note. There is something leaning against one of the trees to the side of the path.
@@ -228,23 +228,35 @@ class Forest(Scene):
 class Well(Scene):
     
     def enter(self):
-        print("""
-            \nScene context will go here.
-            """)
-        choice = input("> ")
 
-        if "choice option" in choice:
-            print("\nConsequence goes here.")
-            #return statement moving game forward
+        if "wolf" in inventory:
+            print("""
+                \nYou continue through the forest with the wolf walking beside you. As you walk, the trees on either side of you become more sparse and light begins to filter through the leaves once more. The path seems neverending ahead of you, but you can see that the forest is coming to an end.
+                \nWith the forest behind you, you keep walking, unsure of your destination. There is a cabin up ahead on the left with a large brick well in front. It is the only noteable object in the surrounding area.
+                \nYou and the wolf walk over to the cabin. The door is locked. You walk back over to the well and see that there is a raven perched on the edge. There is a structure built over the well with a rope wound around it that presumably has a bucket at the other end inside of the well. The well is too deep to see to the bottom of it, though.
+                \nThere is a rock sitting on the ledge of the well with a familiar looking piece of parchment on it. You move the rock and pick up the parchment to read:
+                \nHello again Adventurer!
+                \nIt seems you have made it through the forest of Wyverly! I hope it didn't cause you too much trouble and that you found the sword that I left for you in the garden! 
+                \nThe cabin you see before you belongs to me. The door is locked, but the spare key is located in the bucket in the well. Pull up the bucket and get the key and then head into the cabin. I have left more information about Edrys and her potential whereabouts inside.
+                \nThank you for your help, brave Adventurer!
+                \nThe Mage of Wyverly Forest
+                \n
+                \nOn one side of the well is a crank that looks as though it should raise the bucket.
+                \nYou attempt to pull on the crank to raise the bucket but it appears to be stuck. You look over at the raven who is tilting their head back and forth as they watch you.")
+                \nThe raven squawks at you again before opening it's beak wide. You hear a man's voice coming from the Raven as though it were a speaker.
+                \n"What is the healthiest kind of water?"
+                """)
+            answer = False
+            while not answer:
+                response = input("\n> ")
+                response_lower = response.lower()
 
-        elif "losing choice option" in choice:
-            print("/nConsequence goes here.")
-            print("Losing statement goes here.")
-            self.try_again()
+                if response_lower == "well water":
+                    print("""
+                        \nThe raven closes its mouth and rises into the air before swooping around you and down into the well. After a moment it returns with a key in its beak. The raven drops the key at your feet and flys away.
+                        """)
+                    return 'cabin'
 
-        else:
-            print("Please enter an available choice.")
-            self.enter()
 
 class Cabin(Scene):
 
