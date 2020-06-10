@@ -120,7 +120,7 @@ class Garden(Scene):
         if ("path" in choice) or ("forest" in choice):
             return 'forest'
         
-        elif ("item" in choice) or ("tree" in choice):
+        elif ("item" in choice) or ("tree" in choice) or ("examine" in choice):
             print("""\nAs you approach the path into the forest, you see that the item leaning against the tree is a sword with a blade the length of your arm. It is sheithed in dark brown leather and has a strap to go across your back.
                 \nDo you take the sword?
                 """)
@@ -129,6 +129,7 @@ class Garden(Scene):
             if choice == "yes":
                 inventory.append("sword")
                 print("You strap the sword to your back and follow the path into the forest.")
+                return 'forest'
             else:
                 print("Leaving the sword where it is, you walk into the forest.")
             return 'forest'
@@ -144,12 +145,8 @@ class Forest(Scene):
             \nThe trees grow thicker around you as you walk deeper into the forest. Less and less sunlight is filtering through until you find yourself in semi darkness. The path is dirt with mushrooms of all shapes and colors popping up at the base of trees along the edges. There is sound of wildlife around you: leaves rustling as animals move through the trees, birds chirping.
             \nFor a moment everything grows louder as the sound of hundreds of birds taking flight at once echoes through the trees. Then the forest goes quiet. You look around, but it is hard to see any details off of the path with the trees as thick as they are. The path turns up ahead and there is no end to the forest in sight. 
             """)
-        input()
-        print("\There is a rustling of leaves to your left.")
-        input()
-        print("\nMovement in the trees ahead of you.")
-        input()
         print("""
+            \nThere is a frantic rustling of leaves to your left and movement in the trees in front of you.
             \nYou hear deep and heavy panting ahead of you as a large grey wolf with black ears and paws stalks toward you.
             \nThe wolf stops a few yards from you and widens his stance, ready to strike.
             \nDo you:
@@ -176,10 +173,9 @@ class Forest(Scene):
 
             if choice == "yes":
                 inventory.append("wolf")
-                print(inventory)
             else:
-                print(inventory)
                 pass
+            return 'well'
 
         elif ("attack" in choice) or ("sword" in choice):
             pass
@@ -192,18 +188,6 @@ class Forest(Scene):
 
         else:
             print("Please pick an appropriate option.")
-            self.enter()
-
-            return 'well'
-            #return statement moving game forward
-
-        elif "losing choice option" in choice:
-            print("/nConsequence goes here.")
-            print("Losing statement goes here.")
-            self.try_again()
-
-        else:
-            print("Please enter an available choice.")
             self.enter()
 
 class Well(Scene):
