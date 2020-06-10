@@ -34,6 +34,7 @@ class Scene(object):
         selection = answer.lower()
 
         if selection == "yes":
+            #this part of function should include a call to start the game over
             pass
         elif selection == "no":
             print("\nThank you for playing!")
@@ -62,26 +63,7 @@ class Kitchen(Scene):
         choice = input("> ")
         
         if ("walk" in choice) or ("garden" in choice):
-            print("\nYou approach the bench and notice a piece of parchment laying on it.")
-            print("\nWould you like to read the parchment?")
-            answer = input("> ")
-            choice = answer.lower()
-            if choice == "yes":
-                pass
-            elif choice == "no":
-                print("\nYou should probably just read the parchment. There's nothing else to do here.")
-            else:
-                print("\nJust read the parchment, we don't have all day.")
-            input("\n[enter]")
-            print("""\nYou pick up the parchment and read:
-                \nWelcome to the forest of Wyverly Adventurer!
-                \nI am the Mage of this forest. I have brought you here because I need your help!
-                \nA dear friend of mine has gone missing and I need your help to find her. Edrys is prone to wander off, but she has never been gone longer than an hour or two without word before. I am worried something terrible has happened to her.
-                \nFollow the path to the west that leads through the forest. I will talk to you there.
-                \nSigned,
-                \nThe Mage of Wyverly
-                """)
-            input("\n[enter]")
+            
             return 'garden'
 
         elif ("close" in choice) or ("fridge" in choice):
