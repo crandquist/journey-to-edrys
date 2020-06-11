@@ -24,10 +24,7 @@ class Engine(object):
 
 class Map(object):
     
-    non_wolf_scenes = {'kitchen' : scenes.Kitchen(),
-            'garden' : scenes.Garden(),
-            'forest' : scenes.Forest(),
-            'well' : scenes.Well(),
+    wolf_scenes = {'well' : scenes.Well(),
             'cabin' : scenes.Cabin(),
             'shed' : scenes.Shed(),
             'bridge' : scenes.Bridge(),
@@ -35,7 +32,10 @@ class Map(object):
             'beach' : scenes.Beach(),
             'finished' : scenes.Finished()
     }
-    wolf_scenes = {'well' : wolfscenes.Well(),
+    non_wolf_scenes = {'kitchen' : scenes.Kitchen(),
+                    'garden' : scenes.Garden(),
+                    'forest' : scenes.Forest(),
+                    'well' : wolfscenes.Well(),
                     'cabin' : wolfscenes.Cabin(),
                     'shed' : wolfscenes.Shed(),
                     'bridge' : wolfscenes.Bridge(),
@@ -43,19 +43,21 @@ class Map(object):
 
     def __init__(self, start_scene):
         self.start_scene = start_scene
-        self.wolf = False
+        self.wolf = None
 
     def has_wolf(self, inventory = scenes.inventory):
         if "wolf" in scenes.inventory:
-            self.wolf = True
+            self.wolf = 'wolf'
+            return self.wolf
 
     def next_scene(self, scene_name):
         self.has_wolf()
-        if self.wolf == False:
-            val = Map.non_wolf_scenes.get(scene_name)
-            return val
-        elif self.wolf == True:
+        if self.wolf == 'wolf':
             val = Map.wolf_scenes.get(scene_name)
+            print(val)
+            return val
+        else:
+            val = Map.non_wolf_scenes.get(scene_name)
             return val
 
     def opening_scene(self):
