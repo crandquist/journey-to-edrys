@@ -213,7 +213,7 @@ class Well(Scene):
         print("""
             \nYou continue through the forest with the wolf walking beside you. As you walk, the trees on either side of you become more sparse and light begins to filter through the leaves once more. The path seems neverending ahead of you, but you can see that the forest is coming to an end.
             \nWith the forest behind you, you keep walking, unsure of your destination. There is a cabin up ahead on the left with a large brick well in front. It is the only noteable object in the surrounding area.
-            \nYou and the wolf walk over to the cabin. The door is locked. You walk back over to the well and see that there is a raven perched on the edge. There is a structure built over the well with a rope wound around it that presumably has a bucket at the other end inside of the well. The well is too deep to see to the bottom of it, though.
+            \nYou and the wolf walk over to the cabin. The door is locked. You knock but there is no answer. You walk back over to the well and see that there is a raven perched on the edge. There is a structure built over the well with a rope wound around it that presumably has a bucket at the other end inside of the well. The well is too deep to see to the bottom of it, though.
             \nThere is a rock sitting on the ledge of the well with a familiar looking piece of parchment on it. You move the rock and pick up the parchment to read:
             \nHello again Adventurer!
             \nIt seems you have made it through the forest of Wyverly! I hope it didn't cause you too much trouble and that you found the sword that I left for you in the garden! 
