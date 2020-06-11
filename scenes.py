@@ -1,7 +1,32 @@
-import engine
+inventory = []
+
+class Scene(object):
+
+    def __init__(self):
+        self.attempt = 1
+
+    def enter(self):
+        print("This scene is not yet configured.")
+        print("Subclass it and implement enter().")
+        exit(1)
+
+    def try_again(self):
+        print("\nWould you like to try again?")
+        answer = input("> ")
+        choice = answer.lower()
+
+        if choice == "yes":
+            #this part of function should include a call to start the game over
+            pass
+        elif choice == "no":
+            print("\nThank you for playing!")
+            exit(1)
+        else:
+            print("\nPlease enter yes or no.")
+            self.try_again()
 
 
-class Kitchen(engine.Scene):
+class Kitchen(Scene):
     
     def enter(self):
         print("\nWelcome to Journey of Edrys!")
@@ -36,7 +61,7 @@ class Kitchen(engine.Scene):
             print("\nPlease enter an available choice.")
             self.enter()
 
-class Garden(engine.Scene):
+class Garden(Scene):
     
     def enter(self):
         print("""
@@ -83,7 +108,7 @@ class Garden(engine.Scene):
             answer = input("\n> ")
             choice = answer.lower()
             if choice == "yes":
-                engine.inventory.append("sword")
+                inventory.append("sword")
                 print("\nYou strap the sword to your back and follow the path into the forest.")
                 return 'forest'
             else:
@@ -94,7 +119,7 @@ class Garden(engine.Scene):
             print("\nPlease enter an available choice.")
             self.enter()
 
-class Forest(engine.Scene):
+class Forest(Scene):
     
     def enter(self):
         print("""
@@ -129,14 +154,14 @@ class Forest(engine.Scene):
             choice = answer.lower()
 
             if choice == "yes":
-                engine.inventory.append("wolf")
+                inventory.append("wolf")
                 return 'well'
 
             return 'well'
 
         elif ("attack" in choice) or ("sword" in choice):
             
-            if "sword" not in engine.inventory:
+            if "sword" not in inventory:
                 print("\nYou do not have a sword to attack the wolf with.")
                 self.enter()
             else:
@@ -181,7 +206,7 @@ class Forest(engine.Scene):
             print("\nPlease pick an appropriate option.")
             self.enter()
 
-class Well(engine.Scene):
+class Well(Scene):
     
     def enter(self):
 
@@ -220,6 +245,7 @@ class Well(engine.Scene):
                     print("""
                         \nThe raven closes its mouth and rises into the air before swooping around you and down into the well. After a moment it returns with a key in its beak. The raven drops the key at your feet and flys away.
                         """)
+                    print(inventory)
                     return 'cabin'
         
         elif ("climb" in choice) or ("well" in choice):
@@ -238,7 +264,7 @@ class Well(engine.Scene):
             self.enter()
 
 
-class Cabin(engine.Scene):
+class Cabin(Scene):
 
     def enter(self):
         print("""
@@ -259,7 +285,7 @@ class Cabin(engine.Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Shed(engine.Scene):
+class Shed(Scene):
     
     def enter(self):
         print("""
@@ -280,7 +306,7 @@ class Shed(engine.Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Bridge(engine.Scene):
+class Bridge(Scene):
     
     def enter(self):
         print("""
@@ -301,7 +327,7 @@ class Bridge(engine.Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Cave(engine.Scene):
+class Cave(Scene):
     
     def enter(self):
         print("""
@@ -322,7 +348,7 @@ class Cave(engine.Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Beach(engine.Scene):
+class Beach(Scene):
     
     def enter(self):
         print("""
@@ -343,7 +369,7 @@ class Beach(engine.Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Final(engine.Scene):
+class Final(Scene):
     
     def enter(self):
         print("""\nYou poke the boulder and notice that it is much warmer than a rock formation on this cool beach should be. Nothing happens at first. After a moment, though, the boulder seems to shiver a bit. You poke it again, curiosity too much for you to resist. The boulder begins to expand... No. It is unravelling, revealing a small, black dragon. The wingspan is roughly twice your height. The dragon looks around for a moment, clearly looking for the source of the poking before it's eyes latch on to you. They narrow as the dragon begins to snarl, and you pull the sword from the sheath on your hip, preparing for battle.
@@ -351,7 +377,7 @@ class Final(engine.Scene):
             \nThe Mage appears suddenly between you and the dragon, grinning maniacally. "Hello adventurer! It seems you have found my precious Edrys. What's that? I didn't tell you she was a dragon? Oh well. How terribly remiss of me." The dragon is nuzzling the Mage's hand now. "Thank you so much for your help with this quest! It seems your journey has come to an end and you have been victorious! Would you like me to send you home now?"
         """)
 
-class Finished(engine.Scene):
+class Finished(Scene):
 
     def enter(self):
         print("FILL THIS IN WITH SOMETHING AT SOME POINT")

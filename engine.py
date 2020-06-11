@@ -5,7 +5,6 @@ from textwrap import dedent
 import scenes
 import wolfscenes
 
-inventory = []
 
 class Engine(object):
 
@@ -21,32 +20,6 @@ class Engine(object):
             current_scene = self.scene_map.next_scene(next_scene_name)
 
         current_scene.enter()
-
-
-class Scene(object):
-
-    def __init__(self):
-        self.attempt = 1
-
-    def enter(self):
-        print("This scene is not yet configured.")
-        print("Subclass it and implement enter().")
-        exit(1)
-
-    def try_again(self):
-        print("\nWould you like to try again?")
-        answer = input("> ")
-        choice = answer.lower()
-
-        if choice == "yes":
-            #this part of function should include a call to start the game over
-            pass
-        elif choice == "no":
-            print("\nThank you for playing!")
-            exit(1)
-        else:
-            print("\nPlease enter yes or no.")
-            self.try_again()
 
 
 class Map(object):
@@ -70,11 +43,10 @@ class Map(object):
 
     def __init__(self, start_scene):
         self.start_scene = start_scene
-        self.inventory = []
         self.wolf = False
 
-    def has_wolf(self, inventory = inventory):
-        if "wolf" in inventory:
+    def has_wolf(self, inventory = scenes.inventory):
+        if "wolf" in scenes.inventory:
             self.wolf = True
 
     def next_scene(self, scene_name):

@@ -1,5 +1,5 @@
-from engine import Scene
-from engine import inventory
+from scenes import Scene
+from scenes import inventory
 
 class Well(Scene):
     
