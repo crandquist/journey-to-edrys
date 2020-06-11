@@ -1,51 +1,7 @@
-from sys import exit
-from random import randint
-from textwrap import dedent
+import engine
 
 
-inventory = []
-
-class Engine(object):
-
-    def __init__(self, scene_map):
-        self.scene_map = scene_map
-    
-    def play(self):
-        current_scene = self.scene_map.opening_scene()
-        last_scene = self.scene_map.next_scene('finished')
-
-        while current_scene != last_scene:
-            next_scene_name = current_scene.enter()
-            current_scene = self.scene_map.next_scene(next_scene_name)
-
-        current_scene.enter()
-
-class Scene(object):
-
-    def __init__(self):
-        self.attempt = 1
-
-    def enter(self):
-        print("This scene is not yet configured.")
-        print("Subclass it and implement enter().")
-        exit(1)
-
-    def try_again(self):
-        print("\nWould you like to try again?")
-        answer = input("> ")
-        choice = answer.lower()
-
-        if choice == "yes":
-            #this part of function should include a call to start the game over
-            pass
-        elif choice == "no":
-            print("\nThank you for playing!")
-            exit(1)
-        else:
-            print("\nPlease enter yes or no.")
-            self.try_again()
-
-class Kitchen(Scene):
+class Kitchen(engine.Scene):
     
     def enter(self):
         print("\nWelcome to Journey of Edrys!")
@@ -80,7 +36,7 @@ class Kitchen(Scene):
             print("\nPlease enter an available choice.")
             self.enter()
 
-class Garden(Scene):
+class Garden(engine.Scene):
     
     def enter(self):
         print("""
@@ -127,7 +83,7 @@ class Garden(Scene):
             answer = input("\n> ")
             choice = answer.lower()
             if choice == "yes":
-                inventory.append("sword")
+                engine.inventory.append("sword")
                 print("\nYou strap the sword to your back and follow the path into the forest.")
                 return 'forest'
             else:
@@ -138,7 +94,7 @@ class Garden(Scene):
             print("\nPlease enter an available choice.")
             self.enter()
 
-class Forest(Scene):
+class Forest(engine.Scene):
     
     def enter(self):
         print("""
@@ -173,14 +129,14 @@ class Forest(Scene):
             choice = answer.lower()
 
             if choice == "yes":
-                inventory.append("wolf")
+                engine.inventory.append("wolf")
                 return 'well'
 
             return 'well'
 
         elif ("attack" in choice) or ("sword" in choice):
             
-            if "sword" not in inventory:
+            if "sword" not in engine.inventory:
                 print("\nYou do not have a sword to attack the wolf with.")
                 self.enter()
             else:
@@ -225,23 +181,32 @@ class Forest(Scene):
             print("\nPlease pick an appropriate option.")
             self.enter()
 
-class Well(Scene):
+class Well(engine.Scene):
     
     def enter(self):
 
-        if "wolf" in inventory:
+        print("""
+            \nYou continue through the forest with the wolf walking beside you. As you walk, the trees on either side of you become more sparse and light begins to filter through the leaves once more. The path seems neverending ahead of you, but you can see that the forest is coming to an end.
+            \nWith the forest behind you, you keep walking, unsure of your destination. There is a cabin up ahead on the left with a large brick well in front. It is the only noteable object in the surrounding area.
+            \nYou and the wolf walk over to the cabin. The door is locked. You walk back over to the well and see that there is a raven perched on the edge. There is a structure built over the well with a rope wound around it that presumably has a bucket at the other end inside of the well. The well is too deep to see to the bottom of it, though.
+            \nThere is a rock sitting on the ledge of the well with a familiar looking piece of parchment on it. You move the rock and pick up the parchment to read:
+            \nHello again Adventurer!
+            \nIt seems you have made it through the forest of Wyverly! I hope it didn't cause you too much trouble and that you found the sword that I left for you in the garden! 
+            \nThe cabin you see before you belongs to me. The door is locked, but the spare key is located in the bucket in the well. Pull up the bucket and get the key and then head into the cabin. I have left more information about Edrys and her potential whereabouts inside.
+            \nThank you for your help, brave Adventurer!
+            \nThe Mage of Wyverly Forest
+            \n
+            \nOn one side of the well is a crank that looks as though it should raise the bucket.
+            \nDo you: 
+            \nTry the crank?
+            \nOR
+            \nClimb into the well to get the key yourself?
+            """)
+        answer = input("\n> ")
+        choice = answer.lower()
+
+        if ("try" in choice) or ("crank" in choice):
             print("""
-                \nYou continue through the forest with the wolf walking beside you. As you walk, the trees on either side of you become more sparse and light begins to filter through the leaves once more. The path seems neverending ahead of you, but you can see that the forest is coming to an end.
-                \nWith the forest behind you, you keep walking, unsure of your destination. There is a cabin up ahead on the left with a large brick well in front. It is the only noteable object in the surrounding area.
-                \nYou and the wolf walk over to the cabin. The door is locked. You walk back over to the well and see that there is a raven perched on the edge. There is a structure built over the well with a rope wound around it that presumably has a bucket at the other end inside of the well. The well is too deep to see to the bottom of it, though.
-                \nThere is a rock sitting on the ledge of the well with a familiar looking piece of parchment on it. You move the rock and pick up the parchment to read:
-                \nHello again Adventurer!
-                \nIt seems you have made it through the forest of Wyverly! I hope it didn't cause you too much trouble and that you found the sword that I left for you in the garden! 
-                \nThe cabin you see before you belongs to me. The door is locked, but the spare key is located in the bucket in the well. Pull up the bucket and get the key and then head into the cabin. I have left more information about Edrys and her potential whereabouts inside.
-                \nThank you for your help, brave Adventurer!
-                \nThe Mage of Wyverly Forest
-                \n
-                \nOn one side of the well is a crank that looks as though it should raise the bucket.
                 \nYou attempt to pull on the crank to raise the bucket but it appears to be stuck. You look over at the raven who is tilting their head back and forth as they watch you.")
                 \nThe raven squawks at you again before opening it's beak wide. You hear a man's voice coming from the Raven as though it were a speaker.
                 \n"What is the healthiest kind of water?"
@@ -256,9 +221,24 @@ class Well(Scene):
                         \nThe raven closes its mouth and rises into the air before swooping around you and down into the well. After a moment it returns with a key in its beak. The raven drops the key at your feet and flys away.
                         """)
                     return 'cabin'
+        
+        elif ("climb" in choice) or ("well" in choice):
+            print("""
+                \nYou climb up on to the edge of the well and turn to face the outside. The wolf and the raven are staring at you with wide eyes. You begin to lower yourself into the well, grasping the side which is almost to thick to hold onto. Despite moving slowly and being extremely careful, your foot slips and you find yourself falling into the darkness. You can hear the wolf barking from above and you can see the light at the opening of the well growing smaller and smaller.
+                \nThe air rushing passed you is cold. After about a minute of falling you see the bucket seeming to rise above you. That and the diminishing light are the only clues that you are falling and not that the world of blackness is simply rushing by. Eventually the light and the bucket are too far away for you to make out. You are surrounded by darkness and still falling...
+                """)
+            input("\n[enter]")
+            print("\nYou bolt upright as you come awake in your bed. All you remember is falling through an unending darkness. That and the faces of a wolf and a bird looking at you like you're an idiot. You shake of the nightmare and decide to grab a snack out of the kitchen before going back to sleep.")
+            input("\n[enter]")
+            print("You lose. Thank you for playing! Make better choices next time.")
+            exit(1)
+        
+        else:
+            print("Please pick an available option.")
+            self.enter()
 
 
-class Cabin(Scene):
+class Cabin(engine.Scene):
 
     def enter(self):
         print("""
@@ -279,7 +259,7 @@ class Cabin(Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Shed(Scene):
+class Shed(engine.Scene):
     
     def enter(self):
         print("""
@@ -300,7 +280,7 @@ class Shed(Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Bridge(Scene):
+class Bridge(engine.Scene):
     
     def enter(self):
         print("""
@@ -321,7 +301,7 @@ class Bridge(Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Cave(Scene):
+class Cave(engine.Scene):
     
     def enter(self):
         print("""
@@ -342,7 +322,7 @@ class Cave(Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Beach(Scene):
+class Beach(engine.Scene):
     
     def enter(self):
         print("""
@@ -363,7 +343,7 @@ class Beach(Scene):
             print("Please enter an available choice.")
             self.enter()
 
-class Final(Scene):
+class Final(engine.Scene):
     
     def enter(self):
         print("""\nYou poke the boulder and notice that it is much warmer than a rock formation on this cool beach should be. Nothing happens at first. After a moment, though, the boulder seems to shiver a bit. You poke it again, curiosity too much for you to resist. The boulder begins to expand... No. It is unravelling, revealing a small, black dragon. The wingspan is roughly twice your height. The dragon looks around for a moment, clearly looking for the source of the poking before it's eyes latch on to you. They narrow as the dragon begins to snarl, and you pull the sword from the sheath on your hip, preparing for battle.
@@ -371,32 +351,7 @@ class Final(Scene):
             \nThe Mage appears suddenly between you and the dragon, grinning maniacally. "Hello adventurer! It seems you have found my precious Edrys. What's that? I didn't tell you she was a dragon? Oh well. How terribly remiss of me." The dragon is nuzzling the Mage's hand now. "Thank you so much for your help with this quest! It seems your journey has come to an end and you have been victorious! Would you like me to send you home now?"
         """)
 
-class Finished(Scene):
+class Finished(engine.Scene):
 
     def enter(self):
         print("FILL THIS IN WITH SOMETHING AT SOME POINT")
-
-class Map(object):
-    
-    scenes = {'kitchen' : Kitchen(),
-            'garden' : Garden(),
-            'forest' : Forest(),
-            'well' : Well(),
-            'cabin' : Cabin(),
-            'shed' : Shed(),
-            'bridge' : Bridge(),
-            'cave' : Cave(),
-            'beach' : Beach(),
-            'finished' : Finished()
-    }
-
-    def __init__(self, start_scene):
-        self.start_scene = start_scene
-        self.inventory = []
-
-    def next_scene(self, scene_name):
-        val = Map.scenes.get(scene_name)
-        return val
-
-    def opening_scene(self):
-        return self.next_scene(self.start_scene)
