@@ -151,7 +151,65 @@ class Cabin(Scene):
 
 
 class Shed(Scene):
-    pass
+    def enter(self):
+        print("""\nYou walk over to the shed and pull on the door handle. It sticks, but after a few tugs you are able to pull the door open. The shed is sparse, with only a table along the wall on the left with three wooden boxes the size of a loaf of bread.
+            \nThe boxes all have identical, hinged lids and are set out across the table in a line.
+            \nDo you open the box on the left, in the middle, or on the right?
+            """)
+        answer = input("> ")
+        choice = answer.lower()
+
+        if choice == "middle":
+            print("""\nYou lift the lid on the box to reveal a scroll of parchment tied with a leather cord. You untie the cord and unroll the parchment to discover a map. 
+                \nAcross the top of the map The Mage has written "Adventure Awaits, Edrys". The map is of a valley, with mountains marked on all sides. At the bottom of the map is the forest with the garden and the path through it clearly visible. You are able to locate the cabin and the shed. 
+                \nThere is a fork further up the path. To the left is a seemingly barren land labled "Desert of Ashes". To the right is a bridge that leads across a wide river toward the mountains on the right side of the valley.
+                \nYou roll the map back up and leave the shed, heading back to the path that led you out of the forest.
+                \nYou consult the map again when you get to the fork in the path.
+                \nDo you go left or right?
+                """)
+            answer = input("> ")
+            choice = answer.lower()
+
+            if choice == "right":
+                return 'bridge'
+            
+            elif choice == "left":
+                print("""\nYou take the left fork and find yourself walking away from the lush green lands that you had seen before. The foliage becomes more and more sparse as you go and the air becomes warmer with every step.
+                    \nAfter an hour of walking you find yourself in a vast desert. You keep walking and walking, losing track of time. The edges of your vision begin to blur and eventually everything goes dark.
+                    """)
+                input("[enter]")
+                print("""\nYou are sweating profusely when you come awake in your bed, exhausted. Your mouth is dry and your tongue is swollen. You head to the kitchen for a glass of water and maybe some ice cream to cool you down before you try to sleep again.
+                    """)
+                input("[enter]")
+                print("You lost. Thank you for playing! Better 9luck next time!")
+                exit(1)
+
+            else:
+                print("Please enter an available choice.")
+                self.enter()
+
+        elif choice == "left":
+            print("\nYou lift the lid of the box on the left. You look back at him and startle as you feel something creeping up your arm. You jerk your hand away from the box on instinct and look back to find a spider the size of a grapefruit sinking its fangs into your wrist. There is blinding pain from the bite. You shake your arm again and the spider drops to the floor, skittering quickly out of sigh. You stumble over to him as the spider's venom burns in your veins and your head starts to swim. You fall to your knees next to the door, leaning against it as your vision goes black.")
+            input("[enter]")
+            print("\nThe veins in your arm are on fire  as you wake up in your bed. You remember dreaming about a large spider biting your arm and assume the pain must be from that. Thinking that a snack might help you get back to sleep, you get out of bed and head to the kitchen.")
+            input("[enter]")
+            print("\nYou lost. Thanks for playing! Better luck next time.")
+            exit(1)
+
+        elif choice == "right":
+            print("""\nYou lift the lid of the box on the right slowly, prepared for anything. The box is full of mushrooms of all shapes and colors, some unfamiliar, others look like the onces you saw in the forest. They seem harmless, and maybe if they're edible you could finally get that snack that you went to the fridge for in the first place.
+                \nYou pick up the box and turn to leave the shed. You stub your toe on the table leg in the process and fall to the ground, letting go of the box to catch your fall.
+                \nThe box tumbles in the air and mushrooms fall to the floor. A few of the bigger, purple mushrooms release spores that form in a cloud around you. The smell is sickeningly sweet. The room starts to spin. You hold your breath and try to stand to leave the shed but your legs won't move. You're feeling suddenly drowsy and you yawn. You turn over to your side, thinking that a bit of a nap will help and then you can get up and move on with The Mage's so called "quest."
+                """)
+            input("[enter]")
+            print("\nThere is a sickly sweet smell in your room when you wake up. You yawn and think about going back to sleep, but you are so hungry. You head to the kitchen to get something to eat. Anything but mushrooms.")
+            input("[enter]")
+            print("\nYou lost. Thank you for playing! Better luck next time!")
+            exit(1)
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 
 class Bridge(Scene):
