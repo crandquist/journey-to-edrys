@@ -1,4 +1,5 @@
 inventory = []
+name = None
 
 class Scene(object):
 
@@ -425,14 +426,61 @@ class Shed(Scene):
 class Bridge(Scene):
     
     def enter(self):
-        print("""
-            \nScene context will go here.
+        print("""\nAfter walking for a little while, you and the wolf come to a large stone bridge crossing a wide river. Something about this bridge seems odd, but you can't tell if it's really that something is off or if you are just suspicious of this entire world at this point.
+            \nDo you:
+            \nTake the time to examine the area
+            \nOR
+            \nShake it off and cross the bridge
             """)
-        choice = input("> ")
+        answer = input("> ")
+        choice = answer.lower()
 
-        if "choice option" in choice:
-            print("\nConsequence goes here.")
-            #return statement moving game forward
+        if ("time" in choice) or ("examine" in bridge):
+            print("""\nThe area on either side of the entrance to the bridge is covered in tall grasses that slope down toward the river. You walk into the grass, the wolf at your side, being sure to stay low and move as quietly as possible.
+                \nThere is about six feet between the actual river and the base of the bridge. You see that there is what looks like a large troll sitting there under the bridge. There is a firepit here, the area just around it littered with small bones. The troll is leaning against the underside of the bridge, hands across her belly. Her eyes are closed and she is humming a tune that sounds almost like "Yankee Doodle." She seems nice enough.
+                \nThe wolf barks softly to get the troll's attention. She opens her eyes slowly and smiles softly at the you and the wolf. "Well hello there, cuties. What brings you fine creatures to my bridge? It's very rare that I get visitors. Not that you aren't welcome, of course! What are your names?"
+                """)
+            input("> ")
+            print("""\nThe wolf barks again after you tell the Troll your name. She continues to smile sweetly at you both.
+                \n"Well it is so great to meet you, {name} and Mark. I would love to keep you here to chat, but I am sure that you are wanting to cross the bridge. So. On to business. Are you ready to pay the fee?"
+                \nYou wonder what the fee could possibly be. All you know about bridge trolls is that they ask riddles and eat people.
+                \nDo you:
+                \nOffer to answer a riddle
+                \nOR
+                \nOffer the wolf as payment
+                """)
+            answer = input("> ")
+            choice = answer.lower()
+
+            if ("answer" in choice) or ("riddle" in choice):
+                print("""\nThe troll laughs raucously. "Riddle. Where do you humans get these silly stereotypes? I don't even know any good riddles." She calms down after a moment and goes serious again. "No, no dear. There's a toll. After all, I am a bridge toll troll. Do you have the fee?"
+                \nYou remember the coins from the cabin. Maybe The Mage had left them for you for this.
+                """)
+                if "gold coins" in inventory:
+                    print("\nYou hand the coins over to the troll who beams that gracious smile at you once more before telling you and the wolf, Mark you remind yourself, to pass.")
+                    return 'cave'
+                else:
+                    print("""\nWho would have guessed that you would live to regret not stealing money from someone? You tell the troll that you do not have the money to pay the toll and ask that she please let you cross anyway. You explain to her that you are on a quest for The Mage and that it is urgent.
+                        /nShe laughs again but it no longer sounds kind or welcoming. She turns to the wolf, "now tell me that a creature as gorgeous as you is not friends with this fool? I would hate to have to eat you both." The wolf whines softly at the troll. She sighs. "You know I can't do that. There are no exceptions to the rules. The human has erred greatly. I am able to spare you, however."
+                        \nThe wolf barks and the troll reaches for something on her other side. 
+                        \nThe troll pulls a large club from the ground beside her and before you even have time to think through what is about to happen, she clubs you over the head and everything goes dark.
+                        """)
+                    input("[enter]")
+                    print("\nYou wake up in your bed with a raging headache after a nightmare about a bridge troll. Hoping it will help with your headache, you head to the kitchen for some water and a snack.")
+                    input("[enter]")
+                    print("\nYou lose. Thanks for playing! Remember not to anger the trolls in the future.")
+                    exit(1)
+            
+            elif "wolf" in choice:
+                print("""\nThe wolf barks in indignation and the troll's eyes widen. She glares furiously at you as she says "You really just offerred up your companion to me as payment? How self-serving and incredibly cruel of you! I think I will keep Mark here if you are so quick to get rid of him and he wants to stay. You, however, you we must get rid of.
+                    \nThe wolf barks and the troll reaches for something on her other side. 
+                    \nThe troll pulls a large club from the ground beside her and before you even have time to think through what is about to happen, she clubs you over the head and everything goes dark.
+                    """)
+                input("[enter]")
+                print("\nYou wake up in your bed with a raging headache after a nightmare about a bridge troll. Hoping it will help with your headache, you head to the kitchen for some water and a snack.")
+                input("[enter]")
+                print("\nYou lose. Thanks for playing! Remember not to anger the trolls in the future.")
+                exit(1)
 
         elif "losing choice option" in choice:
             print("/nConsequence goes here.")
