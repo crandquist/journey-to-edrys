@@ -99,7 +99,7 @@ class Cabin(Scene):
                 """)
             input('[enter]')
             print("""\nYou put the journal back on the table and look around the room, checking for anything else that may help you find Edrys.
-                \nThere is a small pile of gold coins on the table that you hadn't been there before, but otherwise there is nothing of note.
+                \nThere is a small pile of gold coins on the table that you swear hadn't been there before, but otherwise there is nothing of note.
                 \nDo you take the coins?
                 """)
             answer = input("> ")
@@ -148,6 +148,63 @@ class Cabin(Scene):
                     self.enter()
             
             else:
+                    print("Please pick an available choice.")
+                    self.enter()
+
+        elif choice == "no":
+            print("""\nThere is a small pile of gold coins on the table that you hadn't noticed there before, but otherwise there is nothing of note.
+                \nDo you take the coins?
+                """)
+            answer = input("> ")
+            choice = answer.lower()
+
+            if choice == "yes":
+                inventory.append("gold coins")
+                print("\nYou take the coins and put them in the pocket of your pajamas. These may be useful later, and if not they can be payment for this ridiculous quest.")
+            else:
+                print("You decide not to take the coins.")
+
+            print("""\nYou go to the back door to the cabin and open it to reveal a small cleared area similar to the front of the cabin. To the right you can see the path that brought you here. Ahead is a shed, smaller than the cabin.
+            \nDo you enter the shed?
+            """)
+            answer = input("> ")
+            choice = answer.lower()
+
+            if choice == "yes":
+                return 'shed'
+
+            elif choice == "no":
+                print("""
+                    \nYou decide to ignore the shed and head back to the path. 
+                    \nWalking further away from the forest on the path, you reach a fork.
+                    \nDo you go right or left?
+                    """)
+                answer = input("> ")
+                choice = answer.lower()
+
+                if choice == "right":
+                    return 'bridge'
+                
+                elif choice == "left":
+                    print("""\nYou take the left fork and find yourself walking away from the lush green lands that you had seen before. The foliage becomes more and more sparse as you go and the air becomes warmer with every step.
+                        \nAfter an hour of walking you find yourself in a vast desert. You keep walking and walking, losing track of time. The edges of your vision begin to blur and eventually everything goes dark.
+                        """)
+                    input("[enter]")
+                    print("""\nYou are sweating profusely when you come awake in your bed, exhausted. Your mouth is dry and your tongue is swollen. You head to the kitchen for a glass of water and maybe some ice cream to cool you down before you try to sleep again.
+                        """)
+                    input("[enter]")
+                    print("You lost. Thank you for playing! Better luck next time!")
+                    exit(1)
+                
+                else:
+                    print("Please pick an available choice.")
+                    self.enter()
+            
+            else:
+                    print("Please pick an available choice.")
+                    self.enter()
+
+        else:
                     print("Please pick an available choice.")
                     self.enter()
 
@@ -215,7 +272,55 @@ class Shed(Scene):
 
 
 class Bridge(Scene):
-    pass
+    def enter(self):
+        print("""\nAfter walking for a little while, you come to a large stone bridge crossing a wide river. Something about this bridge seems odd, but you can't tell if it's really that something is off or if you are just suspicious of this entire world at this point.
+            \nDo you:
+            \nTake the time to examine the area
+            \nOR
+            \nShake it off and cross the bridge
+            """)
+        answer = input("> ")
+        choice = answer.lower()
+
+        if ("time" in choice) or ("examine" in choice):
+            print("""\nThe area on either side of the entrance to the bridge is covered in tall grasses that slope down toward the river. You walk into the grass, being sure to stay low and move as quietly as possible.
+                \nThere is about six feet between the actual river and the base of the bridge. You see that there is what looks like a large troll sitting there under the bridge. There is a firepit here, the area just around it littered with small bones. The troll is leaning against the underside of the bridge, hands across her belly. Her eyes are closed and she is humming a tune that sounds almost like "Yankee Doodle." She seems nice enough.
+                \nThe troll must have heard you coming. She opens her eyes and turns toward you. "Well hello there, cutie. What brings you to my bridge? It's very rare that I get visitors. Not that you aren't welcome, of course! What is your name?"
+                """)
+            name = input("> ")
+            print("""\nThe troll continues to smile sweetly at you as she says, "well it is so great to meet you, {name}. I would love to keep you here to chat, but I am sure that you are wanting to cross the bridge. So. On to business. Are you ready to pay the fee?"
+                \nYou wonder what the fee could possibly be. All you know about bridge trolls is that they ask riddles and eat people. You offer to answer a riddle for the troll.
+                \nThe troll laughs raucously. "Riddle. Where do you humans get these silly stereotypes? I don't even know any good riddles." She calms down after a moment and goes serious again. "No, no dear. There's a toll. After all, I am a bridge toll troll. Do you have the fee?"
+                \nYou remember the coins from the cabin. Maybe The Mage had left them for you for this.
+                """.format(name = name))
+
+            if "gold coins" in inventory:
+                print("\nYou hand the coins over to the troll who beams that gracious smile at you once more before telling you are free to pass.")
+                return 'cave'
+
+            else:
+                print("""\nWho would have guessed that you would live to regret not stealing money from someone? You tell the troll that you do not have the money to pay the toll and ask that she please let you cross anyway. You explain to her that you are on a quest for The Mage and that it is urgent.
+                    \nShe laughs again but it no longer sounds kind or welcoming. The troll reaches for something on her other side. "You see, dear human, there are rules to these things. We toll trolls have a job to do. This is not something I enjoy doing, but you have left me with no choice."
+                    \nThe troll pulls a large club from the ground beside her and before you even have time to think through what is about to happen, she clubs you over the head and everything goes dark.
+                    """)
+                input("[enter]")
+                print("\nYou wake up in your bed with a raging headache after a nightmare about a bridge troll. Hoping it will help with your headache, you head to the kitchen for some water and a snack.")
+                input("[enter]")
+                print("\nYou lose. Thanks for playing! Remember not to anger the trolls in the future.")
+                exit(1)
+
+        elif ("shake" in choice) or ("cross" in choice):
+            print("""\n You assume that your bad feeling about the bridge is just because this whole place is so strange. You begin walking across the bridge but before you make it even half way, a large troll climbs over the side of the bridge and stands towering over you holding an equally large club. Without giving you a moment to defend yourself, the troll raises the club and brings it down on your head. There is a moment of intense pain before everything goes dark.
+                """)
+            input("[enter]")
+            print("\nYou wake up in your bed with a raging headache after a nightmare about a bridge troll. Hoping it will help with your headache, you head to the kitchen for some water and a snack.")
+            input("[enter]")
+            print("\nYou lose. Thanks for playing! You might want to look for trolls the next time you try to cross a bridge.")
+            exit(1)
+
+        else:
+            print("Please enter an available choice.")
+            self.enter()
 
 
 class Cave(Scene):

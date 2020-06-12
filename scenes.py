@@ -1,5 +1,4 @@
 inventory = []
-name = None
 
 class Scene(object):
 
@@ -215,7 +214,7 @@ class Well(Scene):
             \nWith the forest behind you, you keep walking, unsure of your destination. There is a cabin up ahead on the left with a large brick well in front. It is the only noteable object in the surrounding area.
             \nYou and the wolf walk over to the cabin. The door is locked. You knock but there is no answer. You walk back over to the well and see that there is a raven perched on the edge. There is a structure built over the well with a rope wound around it that presumably has a bucket at the other end inside of the well. The well is too deep to see to the bottom of it, though.
             """)
-        input("[enter}")
+        input("[enter]")
         print("""\nThere is a rock sitting on the ledge of the well with a familiar looking piece of parchment on it. You move the rock and pick up the parchment to read:
             \nHello again Adventurer!
             \nIt seems you have made it through the forest of Wyverly! I hope it didn't cause you too much trouble and that you found the sword that I left for you in the garden! 
@@ -308,7 +307,7 @@ class Cabin(Scene):
             input('[enter]')
             print("""\nYou put the journal back on the table and look to the open front door to see that the wolf is still standing outside, sniffing the air and  looking weary. A silent exchange between you and the wolf has it coming inside slowly, turning and closing the door behind him.
                 \nYou take another look around the room, checking for anything else that may help you find Edrys.
-                \nThere is a small pile of gold coins on the table that you hadn't been there before, but otherwise there is nothing of note.
+                \nThere is a small pile of gold coins on the table that you swear hadn't been there before, but otherwise there is nothing of note.
                 \nDo you take the coins?
                 """)
             answer = input("> ")
@@ -357,6 +356,63 @@ class Cabin(Scene):
                     self.enter()
             
             else:
+                    print("Please pick an available choice.")
+                    self.enter()
+
+        elif choice == "no":
+            print("""\nThere is a small pile of gold coins on the table that you hadn't noticed there before, but otherwise there is nothing of note.
+                \nDo you take the coins?
+                """)
+            answer = input("> ")
+            choice = answer.lower()
+
+            if choice == "yes":
+                inventory.append("gold coins")
+                print("\nYou take the coins and put them in the pocket of your pajamas. These may be useful later, and if not they can be payment for this ridiculous quest.")
+            else:
+                print("You decide not to take the coins.")
+
+            print("""\nYou go to the back door to the cabin and open it to reveal a small cleared area similar to the front of the cabin. To the right you can see the path that brought you here. Ahead is a shed, smaller than the cabin.
+            \nDo you enter the shed?
+            """)
+            answer = input("> ")
+            choice = answer.lower()
+
+            if choice == "yes":
+                return 'shed'
+
+            elif choice == "no":
+                print("""
+                    \nYou decide to ignore the shed and head back to the path. The wolf follows at your side.
+                    \nWalking further away from the forest on the path, you reach a fork.
+                    \nDo you go right or left?
+                    """)
+                answer = input("> ")
+                choice = answer.lower()
+
+                if choice == "right":
+                    return 'bridge'
+                
+                elif choice == "left":
+                    print("""\nYou take the left fork and find yourself walking away from the lush green lands that you had seen before. The foliage becomes more and more sparse as you go and the air becomes warmer with every step.
+                        \nAfter an hour of walking you find yourself in a vast desert. The wolf is still at your side, panting with his tongue hanging out of his mouth in his ineffective attempt to keep cool. You keep walking and walking, losing track of time. The edges of your vision begin to blur and eventually everything goes dark.
+                        """)
+                    input("[enter]")
+                    print("""\nYou are sweating profusely when you come awake in your bed, exhausted. Your mouth is dry and your tongue is swollen. You head to the kitchen for a glass of water and maybe some ice cream to cool you down before you try to sleep again.
+                        """)
+                    input("[enter]")
+                    print("You lost. Thank you for playing! Better luck next time!")
+                    exit(1)
+                
+                else:
+                    print("Please pick an available choice.")
+                    self.enter()
+            
+            else:
+                    print("Please pick an available choice.")
+                    self.enter()
+
+        else:
                     print("Please pick an available choice.")
                     self.enter()
 
@@ -435,12 +491,12 @@ class Bridge(Scene):
         answer = input("> ")
         choice = answer.lower()
 
-        if ("time" in choice) or ("examine" in bridge):
+        if ("time" in choice) or ("examine" in choice):
             print("""\nThe area on either side of the entrance to the bridge is covered in tall grasses that slope down toward the river. You walk into the grass, the wolf at your side, being sure to stay low and move as quietly as possible.
                 \nThere is about six feet between the actual river and the base of the bridge. You see that there is what looks like a large troll sitting there under the bridge. There is a firepit here, the area just around it littered with small bones. The troll is leaning against the underside of the bridge, hands across her belly. Her eyes are closed and she is humming a tune that sounds almost like "Yankee Doodle." She seems nice enough.
                 \nThe wolf barks softly to get the troll's attention. She opens her eyes slowly and smiles softly at the you and the wolf. "Well hello there, cuties. What brings you fine creatures to my bridge? It's very rare that I get visitors. Not that you aren't welcome, of course! What are your names?"
                 """)
-            input("> ")
+            name = input("> ")
             print("""\nThe wolf barks again after you tell the Troll your name. She continues to smile sweetly at you both.
                 \n"Well it is so great to meet you, {name} and Mark. I would love to keep you here to chat, but I am sure that you are wanting to cross the bridge. So. On to business. Are you ready to pay the fee?"
                 \nYou wonder what the fee could possibly be. All you know about bridge trolls is that they ask riddles and eat people.
@@ -448,7 +504,7 @@ class Bridge(Scene):
                 \nOffer to answer a riddle
                 \nOR
                 \nOffer the wolf as payment
-                """)
+                """.format(name = name))
             answer = input("> ")
             choice = answer.lower()
 
@@ -461,7 +517,7 @@ class Bridge(Scene):
                     return 'cave'
                 else:
                     print("""\nWho would have guessed that you would live to regret not stealing money from someone? You tell the troll that you do not have the money to pay the toll and ask that she please let you cross anyway. You explain to her that you are on a quest for The Mage and that it is urgent.
-                        /nShe laughs again but it no longer sounds kind or welcoming. She turns to the wolf, "now tell me that a creature as gorgeous as you is not friends with this fool? I would hate to have to eat you both." The wolf whines softly at the troll. She sighs. "You know I can't do that. There are no exceptions to the rules. The human has erred greatly. I am able to spare you, however."
+                        \nnShe laughs again but it no longer sounds kind or welcoming. She turns to the wolf, "now tell me that a creature as gorgeous as you is not friends with this fool? I would hate to have to eat you both." The wolf whines softly at the troll. She sighs. "You know I can't do that. There are no exceptions to the rules. The human has erred greatly. I am able to spare you, however."
                         \nThe wolf barks and the troll reaches for something on her other side. 
                         \nThe troll pulls a large club from the ground beside her and before you even have time to think through what is about to happen, she clubs you over the head and everything goes dark.
                         """)
@@ -482,7 +538,7 @@ class Bridge(Scene):
                 print("\nYou lose. Thanks for playing! Remember not to anger the trolls in the future.")
                 exit(1)
 
-        elif ("shake" in choice) or ("cross" in choice)):
+        elif ("shake" in choice) or ("cross" in choice):
             print("""\n You assume that your bad feeling about the bridge is just because this whole place is so strange. You begin walking across the bridge and are a few yards across when you notice the wolf is not beside you. You look back at the wolf and put your hands up, wondering why he hasn't followed you. The wolf's eyes are wide and he barks quietly once and nods upward once to get you to turn around and look behind you.
                 \nYou turn around to see a large troll standing behind you holding an equally large club. Without giving you a moment to defend yourself, the troll raises the club and brings it down on your head. There is a moment of intense pain before everything goes dark.
                 """)
