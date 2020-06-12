@@ -46,7 +46,7 @@ class Kitchen(Scene):
             \nWalk into the garden.
             \nWhat do you do?
             """)
-        answer = input("\n> ")
+        answer = input("> ")
         choice = answer.lower()
 
         if ("walk" in choice) or ("garden" in choice):
@@ -69,7 +69,7 @@ class Garden(Scene):
             \nWhen you reach the black iron bench you notice a piece of parchment sitting there with a curling scrawl written across it.
             """)
         print("\nWould you like to read the parchment?")
-        answer = input("\n> ")
+        answer = input("> ")
         choice = answer.lower()
 
         if choice == "yes":
@@ -77,11 +77,11 @@ class Garden(Scene):
         
         elif choice == "no":
             print("\nYou should probably just read the parchment. There's nothing else to do here.")
-            input("\n[enter]")
+            input("[enter]")
 
         else:
             print("\nJust read the parchment, we don't have all day.")
-            input("\n[enter]")
+            input("[enter]")
         
         print("""\nYou pick up the parchment and read:
             \nWelcome to the forest of Wyverly, Adventurer!
@@ -95,7 +95,7 @@ class Garden(Scene):
             \nLooking around the garden again, you notice the path to the west that The Mage mentioned in the note. There is something leaning against one of the trees to the side of the path.
             \nWould you like to take the path into the forest? Or examine the item against the tree?
             """)
-        answer = input("\n> ")
+        answer = input("> ")
         choice = answer.lower()
 
         if ("path" in choice) or ("forest" in choice):
@@ -105,7 +105,7 @@ class Garden(Scene):
             print("""\nAs you approach the path into the forest, you see that the item leaning against the tree is a sword with a blade the length of your arm. It is sheithed in dark brown leather and has a strap to go across your back.
                 \nDo you take the sword?
                 """)
-            answer = input("\n> ")
+            answer = input("> ")
             choice = answer.lower()
             if choice == "yes":
                 inventory.append("sword")
@@ -126,7 +126,7 @@ class Forest(Scene):
             \nThe trees grow thicker around you as you walk deeper into the forest. Less and less sunlight is filtering through until you find yourself in semi darkness. The path is dirt with mushrooms of all shapes and colors popping up at the base of trees along the edges. There is sound of wildlife around you: leaves rustling as animals move through the trees, birds chirping.
             \nFor a moment everything grows louder as the sound of hundreds of birds taking flight at once echoes through the trees. Then the forest goes quiet. You look around, but it is hard to see any details off of the path with the trees as thick as they are. The path turns up ahead and there is no end to the forest in sight. 
             """)
-        input("\n[enter]")
+        input("[enter]")
         print("""
             \nThere is a frantic rustling of leaves to your left and movement in the trees in front of you.
             \nYou hear deep and heavy panting ahead of you as a large grey wolf with black ears and paws stalks toward you.
@@ -137,7 +137,7 @@ class Forest(Scene):
             \nWalk slowly toward the wolf, hand in front of you to suggest you mean it no harm
             \nTurn and run back to the garden
             """)
-        answer = input("\n> ")
+        answer = input("> ")
         choice = answer.lower()
 
         if ("hand" in choice) or ("walk" in choice) or ("no harm" in choice):
@@ -150,7 +150,7 @@ class Forest(Scene):
                 \nThe wolf cocks his head again as you turn back toward him and you're not sure why, but his intention is clear. The wolf wants to know if he can come with you.
                 \nDo you allow the wolf to join you on your journey?
                 """)
-            answer = input("\n> ")
+            answer = input("> ")
             choice = answer.lower()
 
             if choice == "yes":
@@ -166,9 +166,9 @@ class Forest(Scene):
                 self.enter()
             else:
                 print("\nYou pull the sword from the sheath at your back swinging it as you move toward the wolf. The wolf snarls and leaps toward you, knocking the sword out of your hands as you fall to the ground. You hit your head hard against the ground and all you know before you lose conciousness is the weight of the wolf on your chest and a large mouth full of teeth coming toward you.")
-                input("\n[enter]")
+                input("[enter]")
                 print("\nYou are gasping for breath as you sit up from your bed, hands coming to your neck. It must have been a nightmare, that wolf towering over you. You are drenched in sweat and you decide some food might be in order before you go back to bed. As you head toward the kitchen, you notice with some confusion that there seems to be a rather large bump on the back of your head.")
-                input("\n[enter]")
+                input("[enter]")
                 print("\nYou lost. Thank you for playing and better luck next time!")
                 exit(1)
 
@@ -178,11 +178,11 @@ class Forest(Scene):
                 \nIt's a stupid plan, really. The wolf is huge and easily overtakes you. Your hands skitter across the ground looking for anything to use as a weapon, you feel something cut through the skin of your right palm. He is standing over you, front paws against your chest, mouth open in a snarl as he lowers his face toward yours.
                 \nDarkness creeps into your vision and everything is silent...
                 """)
-            input("\n[enter]")
+            input("[enter]")
             print("""
                 \nThere is a pain in your hand as you wake up. You squint at it in the darkness of your bedroom, unsure where it came from. There is a small cut surrounded by dried blood on your palm. Vaguely, you remember the nightmare that has woken you. Something about a wolf standing over you, teeth bared. You get out of bed and head toward the kitchen, thinking that maybe a late night snack will help you go back to sleep.
                 """)
-            input("\n[enter]")
+            input("[enter]")
             print("\nYou lost. Thank you for playing and better luck next time!")
             exit(1)
 
@@ -193,12 +193,12 @@ class Forest(Scene):
                 \nThe wolf jumps out in front of you from the trees to your right. You stop mid-stride and turn to run the other direction but trip and fall as you do. Your hands break your fall and there is pain in your wrist. Broken or sprained, it doesn't seem to matter as there is suddenly a firey pain in your leg as the wolf bites down and begins to drag you into the trees.
                 \nYou're screaming for help as the darkness creeps into your vision...
                 """)
-            input("\n[enter]")
+            input("[enter]")
             print("""
                 \nYou wake up screaming, surging forward in bed with your hands behind you, you notice there is a pain in your wrist. 
                 \nYou take a deep breath and decide to grab a snack out of the kitchen to clear your mind. Visions of a dark forest fill your head as you get out of bed.
                 """)
-            input("\n[enter]")
+            input("[enter]")
             print("\nYou lost. Thank you for playing and better luck next time!")
             exit(1)
 
@@ -227,7 +227,7 @@ class Well(Scene):
             \nOR
             \nClimb into the well to get the key yourself?
             """)
-        answer = input("\n> ")
+        answer = input("> ")
         choice = answer.lower()
 
         if ("try" in choice) or ("crank" in choice):
@@ -238,7 +238,7 @@ class Well(Scene):
                 """)
             answer = False
             while not answer:
-                response = input("\n> ")
+                response = input("> ")
                 response_lower = response.lower()
 
                 if response_lower == "well water":
@@ -253,7 +253,7 @@ class Well(Scene):
                 \nYou climb up on to the edge of the well and turn to face the outside. The wolf and the raven are staring at you with wide eyes. You begin to lower yourself into the well, grasping the side which is almost to thick to hold onto. Despite moving slowly and being extremely careful, your foot slips and you find yourself falling into the darkness. You can hear the wolf barking from above and you can see the light at the opening of the well growing smaller and smaller.
                 \nThe air rushing passed you is cold. After about a minute of falling you see the bucket seeming to rise above you. That and the diminishing light are the only clues that you are falling and not that the world of blackness is simply rushing by. Eventually the light and the bucket are too far away for you to make out. You are surrounded by darkness and still falling...
                 """)
-            input("\n[enter]")
+            input("[enter]")
             print("\nYou bolt upright as you come awake in your bed. All you remember is falling through an unending darkness. That and the faces of a wolf and a bird looking at you like you're an idiot. You shake of the nightmare and decide to grab a snack out of the kitchen before going back to sleep.")
             input("\n[enter]")
             print("You lose. Thank you for playing! Make better choices next time.")
@@ -268,7 +268,7 @@ class Cabin(Scene):
 
     def enter(self):
         print("""
-            \nYou pick up the key and walk back over to the cabin, the wolf following behind you. You unlock the door and push it open, looking around before you step inside. It's a small cabin with only one room. Along one wall is a bed barely big enough for a single adult. The far wall has a fireplace with a cooking pot hanging over what you suspect are warm coals. There is a round table with two chairs that is cluttered with dishes, parchment, and other items. Some of the items on the table are recognizable, but others are strange. There is a jar filled with a clear liquid and what looks to be organs from several small animals. There are herbs and twigs scattered across the table as well.
+            \nYou pick up the key and walk back over to the cabin, the wolf following behind you. You unlock the door and push it open, looking around before you step inside. It's a small cabin with only one room. Along one wall is a bed barely big enough for a single adult. The far wall has a fireplace with a cooking pot hanging over what you suspect are warm coals and a door in one corner that must lead to the back of the cabin. There is a round table with two chairs that is cluttered with dishes, parchment, and other items. Some of the items on the table are recognizable, but others are strange. There is a jar filled with a clear liquid and what looks to be organs from several small animals. There are herbs and twigs scattered across the table as well.
             \nThe wolf seems uneasy at your side. You look to him as you step into the cabin, but he makes no move to follow you. 
             \nYou shrug and turn to look closer around the room. The Mage had said that there would be new information about Edrys here, but nothing seems to stand out as something you are supposed to be looking at.
             \nThe parchment scattered across the table is blank. There is a quill and ink pot there as well. Likely used to write the notes you have found already. There is a small side table next to the bed with a leatherbound book on it. You pick up the book and open it to the first page. It appears to be a journal, written in The Mage's handwriting.
@@ -292,8 +292,7 @@ class Cabin(Scene):
                 \nI appologized to her for my bad manners the other day and asked for her name. She let me know that I could call her Edrys. What a lovely name.
                 """)
             input("[enter]")
-            print("""
-                \nThere are many entries along these same lines mentioning Edrys through the first two thirds of the journal. You flip through them but do not spend the time to read them in their entirety. You stop toward the end of the journal on a longer entry.
+            print("""\nThere are many entries along these same lines mentioning Edrys through the first two thirds of the journal. You flip through them but do not     spend the time to read them in their entirety. You stop toward the end of the journal on a longer entry.
                 \n
                 \nGrowth 3, 326
                 \nEdrys has been living in the cabin with me for a few weeks now. We have settled into a routine. She helps me gather food and herbs and other potions ingredients in the morning and accompanies me on my patrols of the forest.
@@ -304,33 +303,119 @@ class Cabin(Scene):
                 \nStill.
                 \nIt is so nice not to be alone.
                 """)
-            #return statement moving game forward
+            input('[enter]')
+            print("""\nYou put the journal back on the table and look to the open front door to see that the wolf is still standing outside, sniffing the air and  looking weary. A silent exchange between you and the wolf has it coming inside slowly, turning and closing the door behind him.
+                \nYou take another look around the room, checking for anything else that may help you find Edrys.
+                \nThere is a small pile of gold coins on the table that you hadn't been there before, but otherwise there is nothing of note.
+                \nDo you take the coins?
+                """)
+            answer = input("> ")
+            choice = answer.lower()
 
-        elif "losing choice option" in choice:
-            print("/nConsequence goes here.")
-            print("Losing statement goes here.")
-            self.try_again()
+            if choice == "yes":
+                inventory.append("gold coins")
+                print("You take the coins and put them in the pocket of your pajamas. These may be useful later, and if not they can be payment for this ridiculous quest.")
+            else:
+                print("You decide not to take the coins.")
 
-        else:
-            print("Please enter an available choice.")
-            self.enter()
+            print("""\nYou go to the back door to the cabin and open it to reveal a small cleared area similar to the front of the cabin. To the right you can see the path that brought you here. Ahead is a shed, smaller than the cabin.
+            \nDo you enter the shed?
+            """)
+            answer = input("> ")
+            choice = answer.lower()
+
+            if choice == "yes":
+                return 'shed'
+
+            elif choice == "no":
+                print("""
+                    \nYou decide to ignore the shed and head back to the path. The wolf follows at your side.
+                    \nWalking further away from the forest on the path, you reach a fork.
+                    \nDo you go right or left?
+                    """)
+                answer = input("> ")
+                choice = answer.lower()
+
+                if choice == "right":
+                    return 'bridge'
+                
+                elif choice == "left":
+                    print("""\nYou take the left fork and find yourself walking away from the lush green lands that you had seen before. The foliage becomes more and more sparse as you go and the air becomes warmer with every step.
+                        \nAfter an hour of walking you find yourself in a vast desert. The wolf is still at your side, panting with his tongue hanging out of his mouth in his ineffective attempt to keep cool. You keep walking and walking, losing track of time. The edges of your vision begin to blur and eventually everything goes dark.
+                        """)
+                    input("[enter]")
+                    print("""\nYou are sweating profusely when you come awake in your bed, exhausted. Your mouth is dry and your tongue is swollen. You head to the kitchen for a glass of water and maybe some ice cream to cool you down before you try to sleep again.
+                        """)
+                    input("[enter]")
+                    print("You lost. Thank you for playing! Better luck next time!")
+                    exit(1)
+                
+                else:
+                    print("Please pick an available choice.")
+                    self.enter()
+            
+            else:
+                    print("Please pick an available choice.")
+                    self.enter()
+
 
 class Shed(Scene):
     
     def enter(self):
-        print("""
-            \nScene context will go here.
+        print("""\nYou walk over to the shed and pull on the door handle. It sticks, but after a few tugs you are able to pull the door open. The shed is sparse, with only a table along the wall on the left with three wooden boxes the size of a loaf of bread.
+            \nThe boxes all have identical, hinged lids and are set out across the table in a line.
+            \nDo you open the box on the left, in the middle, or on the right?
             """)
-        choice = input("> ")
+        answer = input("> ")
+        choice = answer.lower()
 
-        if "choice option" in choice:
-            print("\nConsequence goes here.")
-            #return statement moving game forward
+        if choice == "middle":
+            print("""\nYou lift the lid on the box to reveal a scroll of parchment tied with a leather cord. You untie the cord and unroll the parchment to discover a map. 
+                \nAcross the top of the map The Mage has written "Adventure Awaits, Edrys". The map is of a valley, with mountains marked on all sides. At the bottom of the map is the forest with the garden and the path through it clearly visible. You are able to locate the cabin and the shed. 
+                \nThere is a fork further up the path. To the left is a seemingly barren land labled "Desert of Ashes". To the right is a bridge that leads across a wide river toward the mountains on the right side of the valley.
+                \nYou roll the map back up and look back at the wolf who is standing just inside the door. He cocks his head at you as you lead him out of the shed and back to the path.
+                \nYou consult the map again when you get to the fork in the path.
+                \nDo you go left or right?
+                """)
+            answer = input("> ")
+            choice = answer.lower()
 
-        elif "losing choice option" in choice:
-            print("/nConsequence goes here.")
-            print("Losing statement goes here.")
-            self.try_again()
+            if choice == "right":
+                return 'bridge'
+            
+            elif choice == "left":
+                print("""\nYou take the left fork and find yourself walking away from the lush green lands that you had seen before. The foliage becomes more and more sparse as you go and the air becomes warmer with every step.
+                    \nAfter an hour of walking you find yourself in a vast desert. The wolf is still at your side, panting with his tongue hanging out of his mouth in his ineffective attempt to keep cool. You keep walking and walking, losing track of time. The edges of your vision begin to blur and eventually everything goes dark.
+                    """)
+                input("[enter]")
+                print("""\nYou are sweating profusely when you come awake in your bed, exhausted. Your mouth is dry and your tongue is swollen. You head to the kitchen for a glass of water and maybe some ice cream to cool you down before you try to sleep again.
+                    """)
+                input("[enter]")
+                print("You lost. Thank you for playing! Better 9luck next time!")
+                exit(1)
+
+            else:
+                print("Please enter an available choice.")
+                self.enter()
+
+        elif choice == "left":
+            print("\nThe wolf starts barking behind you as you lift the lid of the box on the left. You look back at him and startle as you feel something creeping up your arm. You jerk your hand away from the box on instinct and look back to find a spider the size of a grapefruit sinking its fangs into your wrist. There is blinding pain and the wolf behind you is whining. You shake your arm again and the spider drops to the floor, skittering quickly out of sigh. You stumble over to him as the spider's venom burns in your veins and your head starts to swim. You fall to your knees next to the wolf, leaning against him. You feel him licking your face as your vision goes black.")
+            input("[enter]")
+            print("\nThe veins in your arm are on fire and your face feels wet as you wake up in your bed. You remember dreaming about a large spider biting your arm and assume the pain must be from that. Thinking that a snack might help you get back to sleep, you get out of bed and head to the kitchen.")
+            input("[enter]")
+            print("\nYou lost. Thanks for playing! Better luck next time.")
+            exit(1)
+
+        elif choice == "right":
+            print("""\nYou lift the lid of the box on the right slowly, prepared for anything. The box is full of mushrooms of all shapes and colors, some unfamiliar, others look like the onces you saw in the forest. They seem harmless, but maybe the wolf will know whether they are or not. If they're edible you might finally get that snack that you went to the fridge for in the first place.
+                \nYou pick up the box and turn to carry it over to the wolf. You stub your toe on the table leg in the process and fall to the ground, letting go of the box to catch your fall.
+                \nThe box tumbles in the air and mushrooms fall to the floor. A few of the bigger, purple mushrooms release spores that form in a cloud around you. The smell is sickeningly sweet. You hear the wolf sneeze from the doorway and the room starts to spin. You hold your breath and try to stand to leave the shed but your legs won't move. You're feeling suddenly drowsy and you yawn. You turn over to your side, thinking that a bit of a nap will help and then you can get up and move on with The Mage's so called "quest."
+                """)
+            input("[enter]")
+            print("\nThere is a sickly sweet smell in your room when you wake up. You yawn and think about going back to sleep, but you are so hungry. You head to the kitchen to get something to eat. Anything but mushrooms.")
+            input("[enter]")
+            print("\nYou lost. Thank you for playing! Better luck next time!")
+            exit(1)
 
         else:
             print("Please enter an available choice.")
