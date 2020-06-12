@@ -9,7 +9,9 @@ class Well(Scene):
             \nYou continue through the forest. As you walk, the trees on either side of you become more sparse and light begins to filter through the leaves once more. The path seems never ending ahead of you, but you can see that the forest is coming to an end.
             \nWith the forest behind you, you keep walking, unsure of your destination. There is a cabin up ahead on the left with a large brick well in front. It is the only notable object in the surrounding area.
             \nYou walk over to the cabin. The door is locked. You knock, but there is no answer. You walk back over to the well and see that there is a raven perched on the edge. There is a structure built over the well with a rope wound around it that presumably has a bucket at the other end inside of the well. The well is too deep to see to the bottom of it, though.
-            \nThere is a rock sitting on the ledge of the well with a familiar looking piece of parchment on it. You move the rock and pick up the parchment to read:
+            """)
+        input("[enter]")
+        print("""\nThere is a rock sitting on the ledge of the well with a familiar looking piece of parchment on it. You move the rock and pick up the parchment to read:
             \nHello again Adventurer!
             \nIt seems you have made it through the forest of Wyverly! I hope it didn't cause you too much trouble and that you found the sword that I left for you in the garden! 
             \nThe cabin you see before you belongs to me. The door is locked, but the spare key is located in the bucket in the well. Pull up the bucket and get the key and then head into the cabin. I have left more information about Edrys and her potential whereabouts inside.
@@ -105,7 +107,7 @@ class Cabin(Scene):
 
             if choice == "yes":
                 inventory.append("gold coins")
-                print("You take the coins and put them in the pocket of your pajamas. These may be useful later, and if not they can be payment for this ridiculous quest.")
+                print("\nYou take the coins and put them in the pocket of your pajamas. These may be useful later, and if not they can be payment for this ridiculous quest.")
             else:
                 print("You decide not to take the coins.")
 
