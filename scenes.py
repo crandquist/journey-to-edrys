@@ -482,10 +482,15 @@ class Bridge(Scene):
                 print("\nYou lose. Thanks for playing! Remember not to anger the trolls in the future.")
                 exit(1)
 
-        elif "losing choice option" in choice:
-            print("/nConsequence goes here.")
-            print("Losing statement goes here.")
-            self.try_again()
+        elif ("shake" in choice) or ("cross" in choice)):
+            print("""\n You assume that your bad feeling about the bridge is just because this whole place is so strange. You begin walking across the bridge and are a few yards across when you notice the wolf is not beside you. You look back at the wolf and put your hands up, wondering why he hasn't followed you. The wolf's eyes are wide and he barks quietly once and nods upward once to get you to turn around and look behind you.
+                \nYou turn around to see a large troll standing behind you holding an equally large club. Without giving you a moment to defend yourself, the troll raises the club and brings it down on your head. There is a moment of intense pain before everything goes dark.
+                """)
+            input("[enter]")
+            print("\nYou wake up in your bed with a raging headache after a nightmare about a bridge troll. Hoping it will help with your headache, you head to the kitchen for some water and a snack.")
+            input("[enter]")
+            print("\nYou lose. Thanks for playing! You might want to look for trolls the next time you try to cross a bridge.")
+            exit(1)
 
         else:
             print("Please enter an available choice.")
