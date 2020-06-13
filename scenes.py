@@ -555,19 +555,51 @@ class Bridge(Scene):
 class Cave(Scene):
     
     def enter(self):
-        print("""
-            \nScene context will go here.
+        print("""\nAfter crossing the bridge you continue to follow the path as it curves toward the mountains on the right side of the map, the wolf always at your side. There seems to be a cave marked at the end of the path. The path begins to slope as you reach the base of the mountain. There are pine trees all around you and it makes it hard to acurrately guage where you are. You are definitely not dressed for a hike and find yourself regretting ever walking into the garden in the first place, but according to the map, you should be coming up on the cave soon. The wolf seems amused by the effort this climb is taking you as he moves with ease.
+            \nThe sun is on the other side of the mountain now and it's nearly too dark in this mountain forest to see where you're going, but finally you make out the outline of the cave. The glow of a fire comes from within the large entrance. You look to the wolf before heading into the cave to ensure that he is coming you. He huffs out a breath of confirmation and you walk into the cave together.
             """)
-        choice = input("> ")
+        input("[enter]")
+        print("""The air around you grows warmer as you walk into the cave. The ceiling of the cave is high above you. The formation seems to be man made as there aren't any stalagtites or stalagmites around the cave. The air is somewhat damp.
+            \nThe fire is near the back of the cave. There is no one else around, but against the back wall you see that there is a wooden hatch in the floor that has been left open.
+            \nYou're looking for anything around the fire that will let you know Edrys has been her when you hear the wolf snarling behind you. You turn back toward the entrance of the cave to see the wolf facing of with two full grown grizzly bears. One is larger than the other, but they are both rounding on the wolf, teeth bared.
+            \nDo you:
+            \nMake a run for the hatch at the back of the cave
+            \nOR
+            \nPull the sword from the sheath at your back and fight the bears
+            """)
+        answer = input("> ")
+        choice = answer.lower()
 
-        if "choice option" in choice:
-            print("\nConsequence goes here.")
-            #return statement moving game forward
+        if ("sword" in choice) or ("fight" in choice):
+            print("""\nThe wolf looks in your direction and barks, head inclining toward the hatch. You know that he is telling you to run for it, but he has helped you get this far and you are going to do all you can to make sure that you both make it out of this moment alive. You pull the sword from the sheath at your back and move to stand next to the wolf, both hands around the hilt of the sword, at the ready.
+                \nDo you go for the big bear or the smaller bear?
+                """)
+            answer = input("> ")
+            choice = answer.lower()
 
-        elif "losing choice option" in choice:
-            print("/nConsequence goes here.")
-            print("Losing statement goes here.")
-            self.try_again()
+            if "smaller" in choice:
+                print("You run at the smaller of the two bears as the wolf attacks the larger bear. After a bit of a skirmish you sink the sword into the smaller bear's chest. It falls to the ground groaning. Beside you, the wolf is still fighting the bigger bear. He looks over at you and barks telling you again to run for the hatch. This time you listen.")
+                return 'beach'
+            
+            elif "big" in choice:
+                print("You run at the bigger of the two bears as the wolf goes for the smaller bear. The bear is nearly twice your size and after a few unsuccessful swipes at your face, the bear manages to knock you to the ground. You feel searing pain in your chest as the bear's claws rip into your skin. You turn your head to the side and see the wolf has managed to take down the smaller bear before everything goes dark.")
+                input("[enter]")
+                print("\nYou sit up as you come awake in your bed, hand to your chest which feels as though it is being ripped open. You remember the bear attack from your nightmare and take a deep breath. Thinking a snack may help you get back to sleep, you head to the kitchen.")
+                input("[enter]")
+                print("You lost. Thanks for playing. Maybe try taking on something closer to your own size next time.")
+                exit(1)
+
+            else:
+                print("Please enter an available choice.")
+                self.enter()
+        
+        elif ("run" in choice) or ("hatch" in choice):
+            print("\nThe wolf looks in your direction and barks, head inclining toward the hatch. You know that he is telling you to run for it, so you do. You hear the sounds of the wolf wimpering and assume the bears managed to take him down. In your distraction you don't see a large rock between you and the hatch and you trip over it, feeling your ankle twist as you fall to the ground. You only barely register the sounds of the bears coming to you before they are on you, claws and teeth rip into your skin and everything goes dark.")
+            input("[enter]")
+            print("\nYour entire body hurts when you wake up in your bed. You remember being attacked by two bears in your nightmare. You get out of bed and stretch before heading to the kitchen for a snack before trying to get back to sleep.")
+            input("[enter]")
+            print("\nYou lost. Thanks for playing. Better luck next time!")
+            exit(1)
 
         else:
             print("Please enter an available choice.")
