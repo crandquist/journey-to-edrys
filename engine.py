@@ -30,6 +30,7 @@ class Map(object):
             'bridge' : scenes.Bridge(),
             'cave' : scenes.Cave(),
             'beach' : scenes.Beach(),
+            'final': scenes.Final(),
             'finished' : scenes.Finished()
     }
     non_wolf_scenes = {'kitchen' : scenes.Kitchen(),
@@ -54,7 +55,6 @@ class Map(object):
         self.has_wolf()
         if self.wolf == 'wolf':
             val = Map.wolf_scenes.get(scene_name)
-            print(val)
             return val
         else:
             val = Map.non_wolf_scenes.get(scene_name)

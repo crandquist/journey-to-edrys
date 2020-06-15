@@ -608,33 +608,77 @@ class Cave(Scene):
 class Beach(Scene):
     
     def enter(self):
-        print("""
-            \nScene context will go here.
+        print("""\nYou make it to the hatch and manage to climb inside by the ladder attached to one wall. You grab the door and pull it shut as you climb down, trying to ignore the guilt you have for leaving your companion to fight the larger bear alone. Once at the bottom of the ladder you look around. There is not much here except a winding staircase headed deeper into the mountain. There is a light at the bottom that you can just see.
+            \nDo you take the staircase?
             """)
-        choice = input("> ")
+        answer = input("> ")
+        choice = answer.lower()
 
-        if "choice option" in choice:
-            print("\nConsequence goes here.")
-            #return statement moving game forward
+        if choice == "yes":
+            print("""\nYou walk down the staircase, it seems to be the height of about two stories. The light at the bottom grows brighter and brighter as you get closer, it's the light of a sunset, and you realize that you must be on the other side of the mountains now. The opening at the bottom of the stairs looks similar to the entrance to the cave, but instead of stepping out into a forest you are greated with warm sand. You hear the ocean and feel the salty mist of sea water against your face.
+                \nThe beach seems small, no longer than a soccer field, with cliffs closing it off on either end. There is no one else around and nothing of note that you can. Except, there is a large, shimmering boulder just at the edge of the ocean. The waves are lapping at it, but not quite going over it. You walk over to the boulder and notice that it seems to be covered in scales.
+                \nDo you:
+                \nPoke the boulder
+                \nStab the boulder
+                \nKick the boulder
+                """)
+            answer = input("> ")
+            choice = answer.lower()
 
-        elif "losing choice option" in choice:
-            print("/nConsequence goes here.")
-            print("Losing statement goes here.")
-            self.try_again()
+            if "poke" in choice:
+                return 'final'
+
+            elif "stab" in choice:
+                print("""\nYou pull the sword from it's sheath once more and aim it toward the boulder. With a forceful push you sink the blade into what turns out to be flesh and not stone. The boulder unfurls and shows itself to be a small dragon who is hissing at you in anger and in pain.
+                    \nThe dragon stalks toward you as you scury back. Eventually you are pressed against the wall of the cliffs and have nowhere else to run. The dragon opens its mouth wide before spitting fire at you. There is bain and everything is bright orange.... And then there is nothing.
+                    """)
+                input("[enter]")
+                print("\nYou are sweating when you wake in your bed. Your face feels burnt and you remember dreaming of a dragon. You shake it off and head to the kitchen for a late night snack.")
+                input("[enter]")
+                print("\nYou lose. Thanks for playing. Maybe don't just start stabbing things next time.")
+                exit(1)
+
+            elif "kick" in choice:
+                print("""\nYou pull your leg back and kick the boulder hard, surprised that you are not met with the resistance of stone but with the give of flesh. The boulder unfurls and shows itself to be a small dragon who is hissing at you in anger and in pain.
+                    \nThe dragon stalks toward you as you scury back. Eventually you are pressed against the wall of the cliffs and have nowhere else to run. The dragon opens its mouth wide before spitting fire at you. There is bain and everything is bright orange.... And then there is nothing.
+                    """)
+                input("[enter]")
+                print("\nYou are sweating when you wake in your bed. Your face feels burnt and you remember dreaming of a dragon. You shake it off and head to the kitchen for a late night snack.")
+                input("[enter]")
+                print("\nYou lose. Thanks for playing. Maybe don't just start kicking things next time.")
+                exit(1)
+            
+            else:
+                print("\nPlease enter an available choice.")
+                self.enter()
 
         else:
-            print("Please enter an available choice.")
+            print("\nThere is nothing else to do here and the bear is still up in the cave, just take the staircase already.")
             self.enter()
+
 
 class Final(Scene):
     
     def enter(self):
-        print("""\nYou poke the boulder and notice that it is much warmer than a rock formation on this cool beach should be. Nothing happens at first. After a moment, though, the boulder seems to shiver a bit. You poke it again, curiosity too much for you to resist. The boulder begins to expand... No. It is unravelling, revealing a small, black dragon. The wingspan is roughly twice your height. The dragon looks around for a moment, clearly looking for the source of the poking before it's eyes latch on to you. They narrow as the dragon begins to snarl, and you pull the sword from the sheath on your hip, preparing for battle.
+        print("""\nYou poke the boulder and notice that it is much warmer than a rock formation should be. Nothing happens at first. After a moment, though, the boulder seems to shiver a bit. You poke it again, curiosity too much for you to resist. The boulder begins to expand... No. It is unravelling, revealing a small, black dragon. The wingspan is roughly twice your height. The dragon looks around for a moment, clearly looking for the source of the poking before it's eyes latch on to you. They narrow as the dragon begins to snarl, and you pull the sword from the sheath on your back, preparing for battle.
+            \nThe Mage appears suddenly between you and the dragon, grinning maniacally. "Hello adventurer! It seems you have found my precious Edrys. What's that? I didn't tell you she was a dragon? Oh well. How terribly remiss of me." The dragon is nuzzling the Mage's hand now. "Thank you so much for your help with this quest! I don't know what I would have done if you hadn't found her. Although it does appear that she was just taking a nap and not actually missing or in danger. Oh well. Better to be safe than sorry, I always say. It seems your journey has come to an end and you have been victorious! Would you like me to send you home now?"
+            """)
+        answer = input("> ")
+        choice = answer.lower()
 
-            \nThe Mage appears suddenly between you and the dragon, grinning maniacally. "Hello adventurer! It seems you have found my precious Edrys. What's that? I didn't tell you she was a dragon? Oh well. How terribly remiss of me." The dragon is nuzzling the Mage's hand now. "Thank you so much for your help with this quest! It seems your journey has come to an end and you have been victorious! Would you like me to send you home now?"
-        """)
+        if choice == "yes":
+            print("\nYou close your eyes when The Mage touches your shoulder... Opening them to the ceiling of your bedroom. You are in your bed in your pajamas. No evidence of the night's journey is to be found as the sky outside begins to lighten with the coming day. You head to the kitchen to start breakfast. As you open the fridge a large maple leaf falls to the floor at your feet.")
+            return 'finished'
+        
+        elif choice == "no":
+            print("""\nThe Mage nods, smiling knowingly at you. "I should have known you would not want to leave this land after the things you have seen this day. If I could allow you to stay, I certainly would, but it is nearing daylight in your world and there are those who need you as surely as I have this night. Go now, and I will ensure that you do not find yourself wanting for this world too greatly.
+                """)
+            input("[enter]")
+            print("\nYou open your eyes as the sun begins to rise, stretching out on your bed. Odd dreams from the night before are slipping from your brain as you fight to grasp on to them. A dragon. A... wizard? Battles and puzzles and a quest... A wolf? It seems like a grand adventure. Maybe you should write a book about it.")
+            return 'finished'
 
 class Finished(Scene):
 
     def enter(self):
-        print("FILL THIS IN WITH SOMETHING AT SOME POINT")
+        print("You win! Thank you for playing!")
+        exit(1)
