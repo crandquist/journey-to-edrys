@@ -324,4 +324,37 @@ class Bridge(Scene):
 
 
 class Cave(Scene):
-    pass
+    def enter(self):
+        print("""\nAfter crossing the bridge you continue to follow the path as it curves toward the mountains on the right side of the map. There seems to be a cave marked at the end of the path. The path begins to slope as you reach the base of the mountain. There are pine trees all around you and it makes it hard to acurrately guage where you are. You are definitely not dressed for a hike and find yourself regretting ever walking into the garden in the first place, but according to the map, you should be coming up on the cave soon. 
+            \nThe sun is on the other side of the mountain now and it's nearly too dark in this mountain forest to see where you're going, but finally you make out the outline of the cave. The glow of a fire comes from within the large entrance. You take a deep breath to prepare yourself for whatever lay ahead before walking into the cave.
+            """)
+        input("[enter]")
+        print("""The air around you grows warmer as you walk into the cave. The ceiling of the cave is high above you. The formation seems to be man made as there aren't any stalagtites or stalagmites around the cave. The air is somewhat damp.
+            \nThe fire is near the back of the cave. There is no one else around, but against the back wall you see that there is a wooden hatch in the floor that has been left open.
+            \nYou're looking for anything around the fire that will let you know Edrys has been here when you hear something growl behind you. You turn back toward the entrance of the cave to see two full grown grizzly bears. One is larger than the other, but they are both angry and coming toward you, teeth bared.
+            \nDo you:
+            \nMake a run for the hatch at the back of the cave
+            \nOR
+            \nPull the sword from the sheath at your back and fight the bears
+            """)
+        answer = input("> ")
+        choice = answer.lower()
+
+        if ("run" in choice) or ("hatch" in choice):
+            print("\nYou make a run for it, glancing back over your shoulder continuously to make sure the bears haven't caught up to you. In your distraction you don't see a large rock between you and the hatch and you trip over it, feeling your ankle twist as you fall to the ground. You only barely register the sounds of the bears coming to you before they are on you, claws and teeth rip into your skin and everything goes dark.")
+            input("[enter]")
+            print("\nYour entire body hurts when you wake up in your bed. You remember being attacked by two bears in your nightmare. You get out of bed and stretch before heading to the kitchen for a snack.")
+            input("[enter]")
+            print("\nYou lost. Thanks for playing. Better luck next time!")
+            exit(1)
+        
+        elif ("sword" in choice) or ("fight" in choice):
+            print("\nYou pull the sword from the sheath at your back, prepared to take on the two bears. They tower over you as they stand, growling, claws at the ready. You try to keep them off of you, swinging the sword back and forth, unprepared for the weight of it. But two bears are too much for one human who is not trained to fight with a sword. The smaller bear catches your side with its claws and you fall to the ground, screaming in pain. Then they are both on you, ripping at your flesh. The world goes dark.")
+            input("[enter]")
+            print("\nYour entire body hurts when you wake up in your bed. You remember being attacked by two bears in your nightmare. YOu get out of bed and stretch before heading to the kitchen for a snack.")
+            print("\nYou lost. Thanks for playing. Better luck next time!")
+            exit(1)
+        
+        else:
+            print("\nPlease enter an available choice.")
+            self.enter()

@@ -561,7 +561,7 @@ class Cave(Scene):
         input("[enter]")
         print("""The air around you grows warmer as you walk into the cave. The ceiling of the cave is high above you. The formation seems to be man made as there aren't any stalagtites or stalagmites around the cave. The air is somewhat damp.
             \nThe fire is near the back of the cave. There is no one else around, but against the back wall you see that there is a wooden hatch in the floor that has been left open.
-            \nYou're looking for anything around the fire that will let you know Edrys has been her when you hear the wolf snarling behind you. You turn back toward the entrance of the cave to see the wolf facing of with two full grown grizzly bears. One is larger than the other, but they are both rounding on the wolf, teeth bared.
+            \nYou're looking for anything around the fire that will let you know Edrys has been here when you hear the wolf snarling behind you. You turn back toward the entrance of the cave to see the wolf facing of with two full grown grizzly bears. One is larger than the other, but they are both rounding on the wolf, teeth bared.
             \nDo you:
             \nMake a run for the hatch at the back of the cave
             \nOR
